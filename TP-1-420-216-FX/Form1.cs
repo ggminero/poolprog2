@@ -18,9 +18,13 @@ namespace TP_1_420_216_FX
         {
             InitializeComponent();
 
-            listBoxParticipants.DataSource = Utilitaire.ChargerParticipants("participants.txt");
+            //enleve la selection par défault des elements de type listbox
+            listBoxParticipants.ClearSelected();
+            listBoxJoueurs.ClearSelected();
 
-            listBoxJoueurs.DataSource = Utilitaire.ChargerJoueur("joueur_stats.txt");
+            //Initialize les listBox avec les données chargées a partire de la classe Utilitaire
+            listBoxParticipants.DataSource = Utilitaire.ChargerParticipants("participants.txt");
+            listBoxJoueurs.DataSource = Utilitaire.ChargerJoueur("joueurs_stats.txt");
         }
 
         /// <summary>

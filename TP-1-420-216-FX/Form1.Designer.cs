@@ -36,11 +36,11 @@
             this.listBoxJoueurs = new System.Windows.Forms.ListBox();
             this.listBoxParticipants = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelNom = new System.Windows.Forms.Label();
+            this.labelNbrPoints = new System.Windows.Forms.Label();
             this.labelPoints = new System.Windows.Forms.Label();
+            this.labelNom = new System.Windows.Forms.Label();
             this.labelJoueurs = new System.Windows.Forms.Label();
             this.labelParticipants = new System.Windows.Forms.Label();
-            this.labelNbrPoints = new System.Windows.Forms.Label();
             this.labelPoolHockey = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -106,10 +106,12 @@
             // 
             // listBoxJoueurs
             // 
+            this.listBoxJoueurs.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxJoueurs.FormattingEnabled = true;
+            this.listBoxJoueurs.ItemHeight = 14;
             this.listBoxJoueurs.Location = new System.Drawing.Point(252, 142);
             this.listBoxJoueurs.Name = "listBoxJoueurs";
-            this.listBoxJoueurs.Size = new System.Drawing.Size(564, 329);
+            this.listBoxJoueurs.Size = new System.Drawing.Size(564, 326);
             this.listBoxJoueurs.TabIndex = 5;
             // 
             // listBoxParticipants
@@ -133,14 +135,14 @@
             this.groupBox1.Text = "Participant";
             this.groupBox1.Visible = false;
             // 
-            // labelNom
+            // labelNbrPoints
             // 
-            this.labelNom.AutoSize = true;
-            this.labelNom.Location = new System.Drawing.Point(6, 26);
-            this.labelNom.Name = "labelNom";
-            this.labelNom.Size = new System.Drawing.Size(29, 13);
-            this.labelNom.TabIndex = 0;
-            this.labelNom.Text = "Nom";
+            this.labelNbrPoints.AutoSize = true;
+            this.labelNbrPoints.Location = new System.Drawing.Point(97, 48);
+            this.labelNbrPoints.Name = "labelNbrPoints";
+            this.labelNbrPoints.Size = new System.Drawing.Size(35, 13);
+            this.labelNbrPoints.TabIndex = 2;
+            this.labelNbrPoints.Text = "label5";
             // 
             // labelPoints
             // 
@@ -150,6 +152,15 @@
             this.labelPoints.Size = new System.Drawing.Size(36, 13);
             this.labelPoints.TabIndex = 1;
             this.labelPoints.Text = "Points";
+            // 
+            // labelNom
+            // 
+            this.labelNom.AutoSize = true;
+            this.labelNom.Location = new System.Drawing.Point(6, 26);
+            this.labelNom.Name = "labelNom";
+            this.labelNom.Size = new System.Drawing.Size(29, 13);
+            this.labelNom.TabIndex = 0;
+            this.labelNom.Text = "Nom";
             // 
             // labelJoueurs
             // 
@@ -170,15 +181,6 @@
             this.labelParticipants.Size = new System.Drawing.Size(94, 17);
             this.labelParticipants.TabIndex = 9;
             this.labelParticipants.Text = "Participants";
-            // 
-            // labelNbrPoints
-            // 
-            this.labelNbrPoints.AutoSize = true;
-            this.labelNbrPoints.Location = new System.Drawing.Point(97, 48);
-            this.labelNbrPoints.Name = "labelNbrPoints";
-            this.labelNbrPoints.Size = new System.Drawing.Size(35, 13);
-            this.labelNbrPoints.TabIndex = 2;
-            this.labelNbrPoints.Text = "label5";
             // 
             // labelPoolHockey
             // 
