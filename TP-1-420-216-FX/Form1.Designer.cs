@@ -66,6 +66,7 @@
             this.enregistrer.TabIndex = 1;
             this.enregistrer.Text = "Enregistrer";
             this.enregistrer.UseVisualStyleBackColor = true;
+            this.enregistrer.Click += new System.EventHandler(this.cmdEnregistrer_Click);
             // 
             // voirFiche
             // 
