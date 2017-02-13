@@ -52,8 +52,7 @@ namespace TP_1_420_216_FX
         #region ToString
         public override string ToString()
         {
-            string participant = String.Format("{0,-20}{1,-10}",
-                Nom, VectNoJoueurPool);
+            string participant = Nom;
 
             return participant;
         }
