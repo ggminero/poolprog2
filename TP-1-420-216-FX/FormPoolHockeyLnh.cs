@@ -60,7 +60,46 @@ namespace TP_1_420_216_FX
         /// <param name="e"></param>
         private void btnVoirFiche_Click(object sender, EventArgs e)
         {
-            FormFicheJoueur formJoueur = new FormFicheJoueur();
+            uint joueurPhotoId = 0;
+            string joueurCode = String.Empty;
+            int joueurButs = 0;
+            int joueurAide = 0;
+            int joueurPlusMoin = 0;
+            int joueurPoints = 0;
+            string nomEtPosition = String.Empty;
+            string equipeEtVille = String.Empty;
+
+            // Retourne le participant selectionné de la ListBox.
+            string joueurSelect = listBoxJoueurs.SelectedItem.ToString();
+
+            // Retourne l'index du participant selectionné de la ListBox.
+            int partIndex = listBoxJoueurs.FindString(joueurSelect);
+
+            Joueur[] lesJoueurs = _lesJoueurs;
+
+            //iteration sur la liste des joueurs
+            foreach (Joueur joueur in _lesJoueurs)
+            {
+                // si le nom dans la chaine de characteres
+                if (joueurSelect.Contains(joueur.Nom))
+                {
+                    //on obtien le ID de la photo du joueur
+                    joueurPhotoId = joueur.noPhoto;
+                    joueurCode = joueur.Code;
+                    joueurButs = joueur.Stats.NbButs;
+                    joueurAide = joueur.Stats.NbAides;
+                    joueurPlusMoin = joueur.Stats.PlusOuMoins;
+                    joueurPoints = joueurButs + joueurAide + (joueurPlusMoin / 2);
+
+
+                    Console.WriteLine(joueurPhotoId);
+                }
+
+            }
+            
+            FormFicheJoueur formJoueur = new FormFicheJoueur(joueurPhotoId, joueurCode, 
+                joueurButs, joueurAide, joueurPlusMoin, joueurPoints);
+
             formJoueur.ShowDialog();
         }
 
@@ -215,5 +254,6 @@ namespace TP_1_420_216_FX
             listBoxJoueurs.ClearSelected();
 
         }
+        
     }
 }
