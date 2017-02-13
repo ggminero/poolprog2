@@ -89,8 +89,9 @@ namespace TP_1_420_216_FX
         #region ToString
         public override string ToString()
         {
-            string joueur = String.Format("{0,-20}{1,-10}{2,-20}{3,-10}{4,5}{5,5}{6,5}",
-                Nom, Code, Position, noPhoto, Stats.NbButs, Stats.NbAides, Stats.PlusOuMoins);
+            int points = Stats.NbButs + Stats.NbAides + Stats.PlusOuMoins / 2;
+            string joueur = String.Format("{0,-18} {1,-15} ({2,-4}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
+                Nom, Position, Code, Stats.NbButs, Stats.NbAides, Stats.PlusOuMoins, points);
 
             return joueur;
         }
