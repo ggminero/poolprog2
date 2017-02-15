@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -52,5 +52,5 @@ namespace TP_1_420_216_FX
 
         }
 
-    }
+
 }

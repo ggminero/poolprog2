@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -190,7 +191,6 @@ namespace TP_1_420_216_FX
 
                 //change le nom du participant a afficher dans la groupBox
                 labelNom.Text = partSelect;
-
                 //change le nombre de points du participant a afficher dans la groupBox
                 foreach (var joueur in _lesJoueurs)
                 {
@@ -200,8 +200,7 @@ namespace TP_1_420_216_FX
                         pointsPool += joueur.Stats.NbAides + joueur.Stats.NbButs + joueur.Stats.PlusOuMoins / 2;
                     }
                 }
-                //assigne la variable et converti a chaine de charactere
-                labelNbrPoints.Text = pointsPool.ToString();
+                //assigne la variable et converti a chaine de charactere                labelNbrPoints.Text = pointsPool.ToString();
             }
             else
             {
@@ -255,5 +254,7 @@ namespace TP_1_420_216_FX
 
         }
         
+
+
     }
 }

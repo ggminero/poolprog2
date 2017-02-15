@@ -1,0 +1,30 @@
+pit, Penguins, Pittsburgh
+phi, Flyers, Philadelphie
+nyr, Rangers, New York
+nyi, Islanders, New York
+nj, Devils, New Jersey
+stl, Blues, St. Louis
+nsh, Predators, Nashville
+det, Red Wings, Detroit
+cbj, Blue Jackets, Columbus
+chi, Blackhawks, Chicago
+tor, Maple Leafs, Toronto
+ott, Sénateurs, Ottawa
+mtl, Canadiens, Montréal
+buf, Sabres, Buffalo
+bos, Bruins, Boston
+van, Canucks, Vancouver
+min, Wild, Minnesota
+edm, Oilers, Edmonton
+col, Avalanche, Colorado
+cgy, Flames, Calgary
+wsh, Capitals, Washington
+tb, Lightning, Tampa Bay
+fla, Panthers, Floride
+car, Hurricanes, Caroline
+sj, Sharks, San Jose
+ari, Coyotes, Arizona
+la, Kings, Los Angeles
+dal, Stars, Dallas
+ana, Ducks, Anaheim
+wpg, Jets, Winnipeg
