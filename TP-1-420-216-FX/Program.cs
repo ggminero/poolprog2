@@ -16,7 +16,8 @@ namespace TP_1_420_216_FX
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormPoolHockey());
+
         }
     }
 }

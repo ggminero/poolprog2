@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+
+
 using System.IO;
 using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
 
 namespace TP_1_420_216_FX
 {
     class Utilitaire
     {
+ 
+
+
         #region MÉTHODES
 
         /// <summary>
@@ -143,4 +149,5 @@ namespace TP_1_420_216_FX
         }
     }
 }
+
 
