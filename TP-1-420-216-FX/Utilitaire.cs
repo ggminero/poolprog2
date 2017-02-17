@@ -1,229 +1,171 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
 namespace TP_1_420_216_FX
 {
-    public class Utilitaire
+    class Utilitaire
     {
-        #region MÉTHODES
 
-        /// <summary>
-        /// Permet de charger les données d'un fichier texte et de créer 
-        /// les objets "Equipe" correspondants (désérialisation).
-        /// </summary>
-        public static Equipe[] ChargerEquipes(string cheminFichier)
-        {
-            // Création du flux en lecture du fichier
-            StreamReader fluxLectEquipe = new StreamReader(cheminFichier);
-
-            // Lecture du fichier
-            string fichierEquipe = fluxLectEquipe.ReadToEnd();
-
-            // Création d'un vecteur de chaînes
-            String[] vectLignes = fichierEquipe.Split('\n');
-
-            // Nombre de lignes non vides dans le fichier.
-            int nbLignes;
-            if (vectLignes[vectLignes.Length - 1] == "")
-                nbLignes = vectLignes.Length - 1;
-            else
-                nbLignes = vectLignes.Length;
-
-            // Création du vecteur des équipes
-            Equipe[] vectEquipes = new Equipe[nbLignes];
-
-            // Fermeture du flux vers le fichier.
-            fluxLectEquipe.Close();
-
-            // On retourne le vecteur d'équipes créé.
-            return vectEquipes;
-        }
-
-        /// <summary>
-        /// Permet de charger les données d'un fichier texte 
-        /// et de créer les objets "Joueur" correspondants (désérialisation).
-        /// </summary>
-        public static Joueur[] ChargerJoueurs(string cheminFichier)
-        {
-            // Création du flux en lecture du fichier
-            StreamReader fluxLectJoueur = new StreamReader(cheminFichier);
-
-            // Lecture du fichier
-            string fichierJoueurs = fluxLectJoueur.ReadToEnd();
-
-            // Création d'un vecteur de chaînes
-            String[] vectLignes = fichierJoueurs.Split('\n');
-
-            // Nombre de lignes non vides dans le fichier.
-            int nbLignes;
-            if (vectLignes[vectLignes.Length - 1] == "")
-                nbLignes = vectLignes.Length - 1;
-            else
-                nbLignes = vectLignes.Length;
-
-            // Création du vecteur des joueurs
-            Joueur[] vectJoueur = new Joueur[nbLignes];
-
-            // Fermeture du flux vers le fichier.
-            fluxLectJoueur.Close();
-
-            // On retourne le vecteur de joueurs créé.
-            return vectJoueur;
-        }
-
-        /// <summary>
-        /// Permet de charger les données d'un fichier texte et de créer 
-        /// les objets "Participant" correspondants (désérialisation).
-        /// </summary>
         public static Participant[] ChargerParticipants(string cheminFichier)
         {
-            // Création du flux en lecture du fichier
-            StreamReader fluxLectPart = new StreamReader(cheminFichier);
+            //compteur pour créer les objets Participant
+            int nbrParticipants = 0;
 
-            // Lecture du fichier
-            string fichierParticipants = fluxLectPart.ReadToEnd();
-
-            // Création d'un vecteur de chaînes
-            String[] vectLignes = fichierParticipants.Split('\n');
-
-            // Nombre de lignes non vides dans le fichier.
-            int nbLignes;
-            if (vectLignes[vectLignes.Length - 1] == "")
-                nbLignes = vectLignes.Length - 1;
-            else
-                nbLignes = vectLignes.Length;
-
-            // Création du vecteur des joueurs
-            Participant[] vectPart = new Participant[nbLignes];
-
-            // Fermeture du flux vers le fichier.
-            fluxLectPart.Close();
-
-            // On retourne le vecteur de joueurs créé.
-            return vectPart;          
-        }
-
-        /// <summary>
-        /// Permet d'enregistrer les données sur les participants dans un fichier
-        /// texte(sérialisation). --> CLASSE PARTICIPANT À CRÉER
-        /// </summary>
-        public static void EnregistrerParticipants(string cheminFichier, Participant[] vectParticipants)
-        {
-            // Création du flux d'écriture dont le chemin d'accès est "cheminFichier"
-            StreamWriter fluxEnregistre = new StreamWriter(cheminFichier, false);
-
-            // Chaîne de caractères pour la version sérialisé d'un objet "Participant"
-            string participantTexte;
-
-            // Traitement de chaque objet du vecteur
-            for (int i = 0; i < vectParticipants.Length; i++)
-            {
-                // Création de la version sérialisée de l'objet "Participant"
-                participantTexte = vectParticipants[i].Prenom + ", ";
-
-                // Écriture de la version sérialisée de l'objet dans un fichier
-                fluxEnregistre.WriteLine(participantTexte);
-            }
-
-            // Fermeture du flux vers le fichier
-            fluxEnregistre.Close();
-        }
-
-        /// <summary>
-        /// Permet de formater pour l'affichage
-        /// une chaîne de caractères en format casse Pascal ou casse mixte.
-        /// </summary>
-        public static String FormaterChainePascalOuMixte(string chaine)// --> à compléter
-        {
-            int indice = 0;
-            char premiereLettreDeuxiemeMot = ' ';
-            char lettreMaj = Char.ToUpper(premiereLettreDeuxiemeMot);
+            //nombre de lignes dans le fichier texte pour déterminer la longueur du vecteur Participant
+            var nbrLignes = File.ReadLines(cheminFichier).Count();
+            Participant[] listeParticipants = new Participant[nbrLignes];
             
-            // Version formatée de la chaine de caractères
-            string chaineFormate = "";
-            
-            // Le deuxième mot en casse Pascal doit commencer par une majuscule
-            int positionDebutDeuxiemeMot = chaine.IndexOf(lettreMaj);
-            
-            // Formatage de la chaine de caractères
-            while (positionDebutDeuxiemeMot != 1)
+            //lecture du fichier text
+            using (StreamReader lecture = new StreamReader(cheminFichier))
             {
-                if (chaine[indice] == lettreMaj)
+                string ligne;
+                
+                // Lecture des lignes du fichier jusqu'a la fin du fichier
+                while ((ligne = lecture.ReadLine()) != null)
                 {
-                     chaineFormate = chaine.ToLower()
+
+                    //split la ligne a un vecteur
+                    List<String> vecteurLigne = new List<String>(ligne.Split(','));
+
+                    string nom = vecteurLigne[0];
+
+                    //Enleve le nom du vecteur pour avoir que des numéros de joueurs choisis 
+                    vecteurLigne.RemoveAt(0);
+                    //Crée un nouveau vecteur avec les numéros de joueurs choisis 
+                    string newByteString = String.Join(",", vecteurLigne);
+
+                    //nous convertissions la chaine de characteres a un byte array
+                    byte[] bytes = Encoding.UTF8.GetBytes(newByteString);
+                    
+                    //init un objet Participant avec les attributs de la classe
+                    Participant unParticipant = new Participant(nom, bytes);
+
+                    //ajout de l'objet participant au vecteur listeParticipants
+                    listeParticipants[nbrParticipants] = unParticipant;
+                    nbrParticipants += 1;
                 }
             }
-           
+                    return listeParticipants;
         }
 
-        /// <summary>
-        /// Permet d'obtenir une image sur le Web à partir d'un URL.
-        /// </summary>
-        public static Image ChargerImageUrl(string url)
+        public static Joueur[] ChargerJoueur(string cheminFichier)
         {
-            // Image à créer et retourner.
-            Image imageUrl = null;
-            // Réponse HTTP.
-            WebResponse reponseHttp = null;
-            // Flux de données HTTP.
-            Stream fluxHttp = null;
+            //compteur pour créer les objets Joueur
+            int nbrJoueurs = 0;
 
-            try
+            //nombre de lignes dans le fichier texte pour déterminer la longueur du vecteur Joueur
+            var nbrLignes = File.ReadLines(cheminFichier).Count();
+            Joueur[] listeJoueur = new Joueur[nbrLignes];
+
+            //lecture du fichier text
+            using (StreamReader lecture = new StreamReader(cheminFichier))
             {
-                // Création de la connexion HTTP vers la ressource désignée par l'URL reçu en paramètre.
-                HttpWebRequest requeteHttp = (HttpWebRequest)WebRequest.Create(url);
-                requeteHttp.AllowWriteStreamBuffering = true;
 
-                // Délai maximum d'attente de la requête.
-                requeteHttp.Timeout = 5000;
+                string ligne;
 
-                // Obtention de la réponse HTTP à partir de la requête HTTP.
-                reponseHttp = requeteHttp.GetResponse();
+                // Lecture des lignes du fichier jusqu'a la fin du fichier
+                while ((ligne = lecture.ReadLine()) != null)
+                {
+                    
+                    //split la ligne pour ajouter chaque element de la ligne a un vecteur
+                    //joueurs avant d'initialiser un objet Joueur 
+                    var joueurs = ligne.Split(',');
 
-                // Obtention du flux de données à partir de la réponse HTTP.
-                fluxHttp = reponseHttp.GetResponseStream();
+                    //variables locales pour déterminer les attributs du Joueur
+                    // nom, code... avant d'initialiser un objet Joueur
+                    int indexPostition;
+                    string nom = joueurs[0];
+                    string code = joueurs[1];
+                    uint noPhoto = Convert.ToUInt32(joueurs[3]);
+                    byte nbButs = Convert.ToByte(joueurs[4]);
+                    byte nbAides = Convert.ToByte(joueurs[5]);
+                    short plusOuMoins = Convert.ToInt16(joueurs[6]);
 
-                // Création de l'image à retourner
-                imageUrl = Image.FromStream(fluxHttp);
+                    //Enleve l'espace de l'element du veteur
+                    string positionJoueur = joueurs[2].Trim();
+                    
+                    //Switch pour déterminer la position du joueur 
+                    switch (positionJoueur)
+                    {
+                        case "C":
+                            indexPostition = 0;
+                            break;
+                        case "AD":
+                            indexPostition = 1;
+                            break;
+                        case "AG":
+                            indexPostition = 2;
+                            break;
+                        case "D":
+                            indexPostition = 3; 
+                            break;
+                        case "G":
+                            indexPostition = 4;
+                            break;
+
+                        default:
+                            indexPostition = 0;
+                            break;
+                    }
+                    
+                    //init des objets StatsJoueurs, Joueur  avant d'ajouter au vecteur d'objet joueur
+                    StatsJoueur statusUn = new StatsJoueur(nbButs, nbAides, plusOuMoins);
+                    Joueur unJoueur = new Joueur(joueurs[0], joueurs[1], (PositionHockey)indexPostition, Convert.ToUInt32(joueurs[3]), statusUn);
+
+                    //Console.WriteLine(unJoueur);
+                    listeJoueur[nbrJoueurs] = unJoueur;
+
+                    //compteur pour itérer les lignes du fichier text, +1 a chaque itération
+                    nbrJoueurs += 1;
+                }
             }
-            catch (Exception e)
-            {
-                // Il y a eu une erreur, affichage d'un message dans la console.
-                Console.WriteLine("ERREUR : Impossible d'obtenir l'image avec l'URL suivant : {0}\nMessage : {1}", url,
-                    e.Message);
-            }
-            finally
-            {
-                // Libération des ressources utilisée (sans possibilité de lever une erreur).
-                try
-                {
-                    // ReSharper disable once PossibleNullReferenceException
-                    fluxHttp.Close();
-                }
-                catch
-                {
-                }
-                try
-                {
-                    // ReSharper disable once PossibleNullReferenceException
-                    reponseHttp.Close();
-                }
-                catch
-                {
-                }
-            }
 
-            // Retourne l'image chargée ou bien "null" si une exception est levée.
-            return imageUrl;
+            return listeJoueur;
         }
-        
-        #endregion 
+
+        public static void EnregistrerPArticipants()
+        {
+            Console.WriteLine("enregistré");
+        }
+
+        public static string FormaterChainePascalOuMixte(string chaineNonPascale)
+        {
+            //declaration de variables pour créer une chaine en format pascale
+            // et un compteur pour identifier la place ou il y a des majuscules dans 
+            // la chaine de characteres
+            string chainePascale = String.Empty;
+            int compteur = 0;
+
+            //iteration sur la chaine de charactere
+            for(int i=0; i< chaineNonPascale.Length;i++)
+            {
+                //si charactere majuscule, +1 au compteur
+                if(char.IsUpper(chaineNonPascale[i]))
+                {
+                    compteur++;
+                    //si plus de 1 char majuscule, on insere un espace a la place
+                    // du deuxieme char majuscule et on converti en minuscule
+                    if (compteur >= 2)
+                    {
+                        chainePascale = chaineNonPascale.Insert(i, " ");
+                        chainePascale = chainePascale.ToLower();
+                    }
+                    //sinon on converti toute la chaine en minuscule sans l'ajout d'espace
+                    else
+                    {
+                        chainePascale = chaineNonPascale.ToLower();
+                    }
+                }
+
+            }
+
+            return chainePascale;
+        }
+
     }
 }
-
-

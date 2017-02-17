@@ -69,7 +69,7 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Numéro permettant d'obtenir la photo du joueur.
         /// </summary>
-        public uint NoPhoto
+        public uint noPhoto
         {
             get { return this._noPhoto; }
             private set { this._noPhoto = value; }
@@ -89,9 +89,11 @@ namespace TP_1_420_216_FX
         #region ToString
         public override string ToString()
         {
-            int points = this.Stats.NbButs + this.Stats.NbAides + Stats.PlusOuMoins / 2;
+            string positionFormat = Position.ToString();
+
+            int points = Stats.NbButs + Stats.NbAides + Stats.PlusOuMoins / 2;
             string joueur = String.Format("{0,-18} {1,-15} ({2,-4}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
-                Nom, Position, Code, Stats.NbButs, Stats.NbAides, Stats.PlusOuMoins, points);
+                Nom, Utilitaire.FormaterChainePascalOuMixte(positionFormat), Code, Stats.NbButs, Stats.NbAides, Stats.PlusOuMoins, points);
 
             return joueur;
         }
@@ -113,7 +115,7 @@ namespace TP_1_420_216_FX
             this.Code = code;
             this.Nom = nom;
             this.Position = position;
-            this.NoPhoto = noPhoto;
+            this.noPhoto = noPhoto;
             this.Stats = stats;
         }
 
