@@ -52,7 +52,7 @@ namespace TP_1_420_216_FX
         #region ToString
         public override string ToString()
         {
-            string participant = Nom;
+            string participant = this.Nom;
 
             return participant;
         }

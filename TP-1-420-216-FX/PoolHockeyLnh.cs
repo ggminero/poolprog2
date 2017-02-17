@@ -41,7 +41,7 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Les joueurs de la LNH disponibles pour le pool de hockey.
         /// </summary>
-        private Joueurs[] _lesJoueurs = null;
+        private Joueur[] _lesJoueurs = null;
 
         /// <summary>
         /// Toutes les équipes de la LNH.
@@ -64,7 +64,7 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Les joueurs de la LNH disponibles pour le pool de hockey.
         /// </summary>
-        public Joueurs[] LesJoueurs
+        public Joueur[] LesJoueurs
         {
             get { return this._lesJoueurs; }
             private set { this._lesJoueurs = value; }
@@ -93,8 +93,8 @@ namespace TP_1_420_216_FX
             {
                 switch (codeEquipe)
                 {
-                    case "a":
-                        this.LesEquipes[i].Nom = "pit";
+                    case "":
+                        this.LesEquipes[i].this.Nom = "pit";
                         break;
 
 

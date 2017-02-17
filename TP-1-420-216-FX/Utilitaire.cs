@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-
-
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
-
 using System.Threading.Tasks;
-
 namespace TP_1_420_216_FX
 {
-    class Utilitaire
+    public class Utilitaire
     {
- 
-
-
         #region MÉTHODES
 
         /// <summary>
@@ -143,10 +138,91 @@ namespace TP_1_420_216_FX
         /// Permet de formater pour l'affichage
         /// une chaîne de caractères en format casse Pascal ou casse mixte.
         /// </summary>
-        public static string FormaterChainePascalOuMixte(string chaine)
+        public static String FormaterChainePascalOuMixte(string chaine)// --> à compléter
         {
+            int indice = 0;
+            char premiereLettreDeuxiemeMot = ' ';
+            char lettreMaj = Char.ToUpper(premiereLettreDeuxiemeMot);
             
+            // Version formatée de la chaine de caractères
+            string chaineFormate = "";
+            
+            // Le deuxième mot en casse Pascal doit commencer par une majuscule
+            int positionDebutDeuxiemeMot = chaine.IndexOf(lettreMaj);
+            
+            // Formatage de la chaine de caractères
+            while (positionDebutDeuxiemeMot != 1)
+            {
+                if (chaine[indice] == lettreMaj)
+                {
+                     chaineFormate = chaine.ToLower()
+                }
+            }
+           
         }
+
+        /// <summary>
+        /// Permet d'obtenir une image sur le Web à partir d'un URL.
+        /// </summary>
+        public static Image ChargerImageUrl(string url)
+        {
+            // Image à créer et retourner.
+            Image imageUrl = null;
+            // Réponse HTTP.
+            WebResponse reponseHttp = null;
+            // Flux de données HTTP.
+            Stream fluxHttp = null;
+
+            try
+            {
+                // Création de la connexion HTTP vers la ressource désignée par l'URL reçu en paramètre.
+                HttpWebRequest requeteHttp = (HttpWebRequest)WebRequest.Create(url);
+                requeteHttp.AllowWriteStreamBuffering = true;
+
+                // Délai maximum d'attente de la requête.
+                requeteHttp.Timeout = 5000;
+
+                // Obtention de la réponse HTTP à partir de la requête HTTP.
+                reponseHttp = requeteHttp.GetResponse();
+
+                // Obtention du flux de données à partir de la réponse HTTP.
+                fluxHttp = reponseHttp.GetResponseStream();
+
+                // Création de l'image à retourner
+                imageUrl = Image.FromStream(fluxHttp);
+            }
+            catch (Exception e)
+            {
+                // Il y a eu une erreur, affichage d'un message dans la console.
+                Console.WriteLine("ERREUR : Impossible d'obtenir l'image avec l'URL suivant : {0}\nMessage : {1}", url,
+                    e.Message);
+            }
+            finally
+            {
+                // Libération des ressources utilisée (sans possibilité de lever une erreur).
+                try
+                {
+                    // ReSharper disable once PossibleNullReferenceException
+                    fluxHttp.Close();
+                }
+                catch
+                {
+                }
+                try
+                {
+                    // ReSharper disable once PossibleNullReferenceException
+                    reponseHttp.Close();
+                }
+                catch
+                {
+                }
+            }
+
+            // Retourne l'image chargée ou bien "null" si une exception est levée.
+            return imageUrl;
+        }
+        
+        #endregion 
     }
 }
 

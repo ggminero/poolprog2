@@ -85,7 +85,7 @@ namespace TP_1_420_216_FX
                 if (joueurSelect.Contains(joueur.Nom))
                 {
                     //on obtien le ID de la photo du joueur
-                    joueurPhotoId = joueur.noPhoto;
+                    joueurPhotoId = joueur.NoPhoto;
                     joueurCode = joueur.Code;
                     joueurButs = joueur.Stats.NbButs;
                     joueurAide = joueur.Stats.NbAides;
