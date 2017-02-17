@@ -89,9 +89,11 @@ namespace TP_1_420_216_FX
         #region ToString
         public override string ToString()
         {
+            string positionFormat = Position.ToString();
+
             int points = Stats.NbButs + Stats.NbAides + Stats.PlusOuMoins / 2;
             string joueur = String.Format("{0,-18} {1,-15} ({2,-4}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
-                Nom, Position, Code, Stats.NbButs, Stats.NbAides, Stats.PlusOuMoins, points);
+                Nom, Utilitaire.FormaterChainePascalOuMixte(positionFormat), Code, Stats.NbButs, Stats.NbAides, Stats.PlusOuMoins, points);
 
             return joueur;
         }

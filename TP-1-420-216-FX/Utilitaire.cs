@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace TP_1_420_216_FX
 {
@@ -111,7 +112,7 @@ namespace TP_1_420_216_FX
                             indexPostition = 0;
                             break;
                     }
-
+                    
                     //init des objets StatsJoueurs, Joueur  avant d'ajouter au vecteur d'objet joueur
                     StatsJoueur statusUn = new StatsJoueur(nbButs, nbAides, plusOuMoins);
                     Joueur unJoueur = new Joueur(joueurs[0], joueurs[1], (PositionHockey)indexPostition, Convert.ToUInt32(joueurs[3]), statusUn);
@@ -131,5 +132,15 @@ namespace TP_1_420_216_FX
         {
             Console.WriteLine("enregistré");
         }
+
+        public static string FormaterChainePascalOuMixte(string chainePascale)
+        {
+
+            string nouvelleChaine = Regex.Replace(chainePascale, "[a-z][A-Z]", chaineMinuscule => chaineMinuscule.Value[0] + 
+            " " + char.ToLower(chaineMinuscule.Value[1]));
+
+            return nouvelleChaine;
+        }
+
     }
 }
