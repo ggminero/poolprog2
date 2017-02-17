@@ -133,13 +133,38 @@ namespace TP_1_420_216_FX
             Console.WriteLine("enregistré");
         }
 
-        public static string FormaterChainePascalOuMixte(string chainePascale)
+        public static string FormaterChainePascalOuMixte(string chaineNonPascale)
         {
+            //declaration de variables pour créer une chaine en format pascale
+            // et un compteur pour identifier la place ou il y a des majuscules dans 
+            // la chaine de characteres
+            string chainePascale = String.Empty;
+            int compteur = 0;
 
-            string nouvelleChaine = Regex.Replace(chainePascale, "[a-z][A-Z]", chaineMinuscule => chaineMinuscule.Value[0] + 
-            " " + char.ToLower(chaineMinuscule.Value[1]));
+            //iteration sur la chaine de charactere
+            for(int i=0; i< chaineNonPascale.Length;i++)
+            {
+                //si charactere majuscule, +1 au compteur
+                if(char.IsUpper(chaineNonPascale[i]))
+                {
+                    compteur++;
+                    //si plus de 1 char majuscule, on insere un espace a la place
+                    // du deuxieme char majuscule et on converti en minuscule
+                    if (compteur >= 2)
+                    {
+                        chainePascale = chaineNonPascale.Insert(i, " ");
+                        chainePascale = chainePascale.ToLower();
+                    }
+                    //sinon on converti toute la chaine en minuscule sans l'ajout d'espace
+                    else
+                    {
+                        chainePascale = chaineNonPascale.ToLower();
+                    }
+                }
 
-            return nouvelleChaine;
+            }
+
+            return chainePascale;
         }
 
     }
