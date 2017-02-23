@@ -125,6 +125,106 @@ namespace TP_1_420_216_FX
                         nom = "Devils";
                         ville = "New Jersey";
                         break;
+                    case "stl":
+                        nom = "Blues";
+                        ville = "St. Louis";
+                        break;
+                    case "nsh":
+                        nom = "Predators";
+                        ville = "Nashville";
+                        break;
+                    case "det":
+                        nom = "Red Wings";
+                        ville = "Detroit";
+                        break;
+                    case "cbj":
+                        nom = "Blue Jackets";
+                        ville = "Colombus";
+                        break;
+                    case "chi":
+                        nom = "Blackhawks";
+                        ville = "Chicago";
+                        break;
+                    case "tor":
+                        nom = "Maple Leafs";
+                        ville = "Toronto";
+                        break;
+                    case "ott":
+                        nom = "Sénateurs";
+                        ville = "Ottawa";
+                        break;
+                    case "mtl":
+                        nom = "Canadiens";
+                        ville = "Montréal";
+                        break;
+                    case "buf":
+                        nom = "Sabres";
+                        ville = "Buffalo";
+                        break;
+                    case "bos":
+                        nom = "Bruins";
+                        ville = "Boston";
+                        break;
+                    case "van":
+                        nom = "Canucks";
+                        ville = "Vancouver";
+                        break;
+                    case "min":
+                        nom = "Wild";
+                        ville = "Minnesota";
+                        break;
+                    case "edm":
+                        nom = "Oilers";
+                        ville = "Edmonton";
+                        break;
+                    case "col":
+                        nom = "Avalanche";
+                        ville = "Colorado";
+                        break;
+                    case "cgy":
+                        nom = "Flames";
+                        ville = "Calgary";
+                        break;
+                    case "wsh":
+                        nom = "Capitals";
+                        ville = "Washington";
+                        break;
+                    case "tb":
+                        nom = "Lightning";
+                        ville = "Tampa Bay";
+                        break;
+                    case "fla":
+                        nom = "Panthers";
+                        ville = "Floride";
+                        break;
+                    case "car":
+                        nom = "Hurricanes";
+                        ville = "Caroline";
+                        break;
+                    case "sj":
+                        nom = "Sharks";
+                        ville = "San Jose";
+                        break;
+                    case "ri":
+                        nom = "Coyotes";
+                        ville = "Arizona";
+                        break;
+                    case "la":
+                        nom = "Kings";
+                        ville = "Los Angeles";
+                        break;
+                    case "dal":
+                        nom = "Stars";
+                        ville = "Dallas";
+                        break;
+                    case "ana":
+                        nom = "Ducks";
+                        ville = "Anaheim";
+                        break;
+                    case "wpg":
+                        nom = "Jets";
+                        ville = "Winnipeg";
+                        break;
                     default :
                         return null;                    
                 }               
@@ -188,5 +288,6 @@ namespace TP_1_420_216_FX
             // Retourne le nombre de points pour tout les joueurs d'un participant
             return nbPointsParticipants;
         }
+        #endregion
     }
 }
