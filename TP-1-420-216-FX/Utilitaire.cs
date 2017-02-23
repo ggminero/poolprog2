@@ -11,6 +11,63 @@ namespace TP_1_420_216_FX
     class Utilitaire
     {
 
+        /// <summary>
+        /// Méthode qui sert à charger les données du fichier texte contenant les participants
+        /// </summary>
+        /// <param name="cheminFichier"></param>
+        /// <returns></returns>
+        public static Equipe[] ChargerEquipes(string cheminFichier)
+        {
+            // Création du flux en lecture du fichier texte
+            StreamReader fluxLecture = new StreamReader(cheminFichier);
+
+            // Lecture du fichier texte
+            string fichierTexte = fluxLecture.ReadToEnd();
+
+            // Création d'un vecteur de chaînes de caractères contenant chaque ligne individuellement.
+            String[] vectLignes = fichierTexte.Split('\n');           
+
+            // Nombre de lignes dans le fichier texte pour déterminer la longueur du vecteur Equipe
+            int nbrLignes = File.ReadLines(cheminFichier).Count();
+
+            // Création d'un vecteur d'équipe 
+            Equipe[] vectEquipes = new Equipe[nbrLignes];
+
+            // Vecteur pour conserver les champs séparément sur une ligne
+            String[] vectChamps;
+
+            // Variables pour la création d'un objet Equipe
+            string nom, ville, code;
+
+            // Traitement de chaque ligne du fichier 
+            for (int i = 0; i < vectEquipes.Length; i++)
+            {
+                // Séparation des champs sur la ligne en traitement
+                vectChamps = vectLignes[i].Split(',');
+
+                // Récupération du nom de l'équipe, de sa ville et de son code
+                nom = vectChamps[0].Trim();
+                ville = vectChamps[1].Trim();
+                code = vectChamps[2].Trim();
+
+                // Création de l'objet "Equipe" et ajout au vecteur
+                vectEquipes[i] = new Equipe(nom, ville, code);
+            }
+
+            // Fermeture du flux vers le fichier
+            fluxLecture.Close();
+
+            // Retour du vecteur d'équipe
+            return vectEquipes;
+
+        }
+
+
+        /// <summary>
+        /// Méthode qui sert à charger les données du fichier texte contenant les participants
+        /// </summary>
+        /// <param name="cheminFichier"></param>
+        /// <returns></returns>
         public static Participant[] ChargerParticipants(string cheminFichier)
         {
             //compteur pour créer les objets Participant

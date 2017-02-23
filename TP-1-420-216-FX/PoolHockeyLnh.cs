@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TP_1_420_216_FX
 {
-    class PoolHockeyLnh
+    public class PoolHockeyLnh
     {
         /// <summary>
         /// Classe représentant le pool de hockey de la LNH
@@ -89,17 +90,30 @@ namespace TP_1_420_216_FX
         /// </summary>
         public Equipe RechercherEquipe(string codeEquipe)
         {
+            
             for (int i = 0; i < this.LesEquipes.Length; i++)
             {
+                // Variables qui serviront à créer un objet Equipe
+                string nom = "";
+                string ville = "";
+                
+                // Création d'un objet Equipe
+                Equipe uneEquipe = new Equipe(codeEquipe, nom, ville);
                 switch (codeEquipe)
                 {
-                    case "":
-                        this.LesEquipes[i].this.Nom = "pit";
-                        break;
-
-
+                    case "pit":
+                        this.LesEquipes[i];
                 }
             }
+        }
+
+        /// <summary>
+        /// Permet d'obtenir le nombre total de points au pool d'un participant (pour tous ses joueurs).
+        /// </summary>
+        public short PointsAuPool(Participant participant)
+        {
+            
+
         }
     }
 }

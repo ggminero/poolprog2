@@ -65,7 +65,6 @@ namespace TP_1_420_216_FX
         /// </summary>
         /// <param name="code">Code de l'équipe du Joueur.</param>
         /// <param name="nom">Nom du Joueur.</param>
-        /// </summary>
         public Participant(String nom, byte[] vectNoJoueurPool)
         {
             this.VectNoJoueurPool = vectNoJoueurPool;

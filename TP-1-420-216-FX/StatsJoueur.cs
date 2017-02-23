@@ -95,7 +95,10 @@ namespace TP_1_420_216_FX
         /// <returns>Nombre de points pour le pool de hockey.</returns>
         public short NbPointsPool()
         {
-            throw new NotImplementedException();
+            // Calcul du nombre de points total au pool
+            int nbPointsTotal = this.NbButs + this.NbAides + this.PlusOuMoins / 2;
+
+            return (short) nbPointsTotal;
         }
 
         #endregion
