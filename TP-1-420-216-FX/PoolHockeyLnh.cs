@@ -90,30 +90,103 @@ namespace TP_1_420_216_FX
         /// </summary>
         public Equipe RechercherEquipe(string codeEquipe)
         {
+            // Création du vecteur des équipes
+            this.LesEquipes = new Equipe[PoolHockeyLnh.FichierEquipes.Length];
             
+            // Variables qui serviront à créer un objet Equipe
+            string nom = "";
+            string ville = "";
+            
+            // Création d'un objet Equipe
+            Equipe uneEquipe = new Equipe(nom, ville, codeEquipe);
+
             for (int i = 0; i < this.LesEquipes.Length; i++)
             {
-                // Variables qui serviront à créer un objet Equipe
-                string nom = "";
-                string ville = "";
-                
-                // Création d'un objet Equipe
-                Equipe uneEquipe = new Equipe(codeEquipe, nom, ville);
+                // Affiche le nom et la ville de l'équipe selon le code approprié
                 switch (codeEquipe)
                 {
                     case "pit":
-                        this.LesEquipes[i];
+                        nom = "Penguin";
+                        ville = "Pittsburgh";
+                        break;
+                    case "phi":
+                        nom = "Flyers";
+                        ville = "Philadelphie";
+                        break;
+                    case "nyr":
+                        nom = "Rangers";
+                        ville = "New York";
+                        break;
+                    case "nyi":
+                        nom = "Islanders";
+                        ville = "New York";
+                        break;
+                    case "nj":
+                        nom = "Devils";
+                        ville = "New Jersey";
+                        break;
+                    default :
+                        return null;                    
+                }               
+                uneEquipe = new Equipe(codeEquipe, nom, ville);
+                
+            }
+            // Retourne le nom et la ville de l'équipe
+            return uneEquipe;
+           
+        }
+
+        /// <summary>
+        /// Recherche un joueur dans le vecteur de joueurs du pool et retourne son indice
+        /// </summary>
+        public int RechercheIndiceJoueur(Joueur joueurRech)
+        {
+            int indiceJoueur = 0;
+           
+            // Création du vecteur de joueurs
+            this.LesJoueurs = new Joueur[PoolHockeyLnh.FichierJoueursStats.Length];
+
+            // Boucle pour parcourir le vecteur des joueurs
+            for (int i = 0; i < this.LesJoueurs.Length; i++)
+            {
+                if (this.LesJoueurs[i] == joueurRech)
+                {
+                    indiceJoueur = i - 1;
+                }
+                else
+                {
+                    indiceJoueur = indiceJoueur - 1;
                 }
             }
+            
+            // Retourne l'indice du joueur
+            return indiceJoueur;
         }
+
+
 
         /// <summary>
         /// Permet d'obtenir le nombre total de points au pool d'un participant (pour tous ses joueurs).
         /// </summary>
         public short PointsAuPool(Participant participant)
         {
+            short nbPointsParticipants = 0;
+            byte nbButs = 0;
+            byte nbAides = 0;
+            short plusOuMoins = 0;
+            short nbJoueurs = 0;
             
-
+            // Appel de la classe StatsJoueurs
+            StatsJoueur nbPoints = new StatsJoueur(nbButs, nbAides, plusOuMoins);
+            
+            // Boucle pour avoir accès à tous les participants
+            for (int i = 0; i < this.LesParticipants.Length; i++)
+            {
+                nbPointsParticipants = (short) ((short)nbPoints.NbPointsPool() * nbJoueurs);
+            }
+            
+            // Retourne le nombre de points pour tout les joueurs d'un participant
+            return nbPointsParticipants;
         }
     }
 }

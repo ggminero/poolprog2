@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_1_420_216_FX
 {
-    class Joueur
+    public class Joueur
     {
         #region ATTRIBUTS
 
