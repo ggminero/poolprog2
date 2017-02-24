@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TP_1_420_216_FX
 {
+    /// <summary>
+    /// Classe représentant un participant à un pool de hockey.
+    /// </summary>
     public class Participant
     {
         #region ATTRIBUTS
@@ -46,9 +49,12 @@ namespace TP_1_420_216_FX
             get { return this._nom; }
             private set { this._nom = value; }
         }
-        
-        #endregion
 
+        #endregion
+        /// <summary>
+        /// Retourne le nom du participant
+        /// </summary>
+        /// <returns></returns>
         #region ToString
         public override string ToString()
         {
@@ -61,9 +67,9 @@ namespace TP_1_420_216_FX
         #region CONSTRUCTEURS
 
         /// <summary>
-        /// Constructeur paramétré qui accepte les trois attributs d'une équipe.
+        /// Constructeur paramétré qui accepte les deux attributs d'un participant.
         /// </summary>
-        /// <param name="code">Code de l'équipe du Joueur.</param>
+        /// <param name="vectNoJoueurPool">Code de l'équipe du Joueur.</param>
         /// <param name="nom">Nom du Joueur.</param>
         public Participant(String nom, byte[] vectNoJoueurPool)
         {

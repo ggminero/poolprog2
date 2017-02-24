@@ -8,6 +8,9 @@ using System.Text.RegularExpressions;
 
 namespace TP_1_420_216_FX
 {
+    /// <summary>
+    /// Classe statique contenant des méthodes utilitaires
+    /// </summary>
     public static class Utilitaire
     {
 
@@ -77,12 +80,12 @@ namespace TP_1_420_216_FX
             var nbrLignes = File.ReadLines(cheminFichier).Count();
             Participant[] listeParticipants = new Participant[nbrLignes];
             
-            //lecture du fichier text
+            //lecture du fichier texte
             using (StreamReader lecture = new StreamReader(cheminFichier))
             {
                 string ligne;
                 
-                // Lecture des lignes du fichier jusqu'a la fin du fichier
+                // Lecture des lignes du fichier jusqu'à la fin du fichier
                 while ((ligne = lecture.ReadLine()) != null)
                 {
 
@@ -91,12 +94,12 @@ namespace TP_1_420_216_FX
 
                     string nom = vecteurLigne[0];
 
-                    //Enleve le nom du vecteur pour avoir que des numéros de joueurs choisis 
+                    //Enlève le nom du vecteur pour avoir que des numéros de joueurs choisis 
                     vecteurLigne.RemoveAt(0);
                     //Crée un nouveau vecteur avec les numéros de joueurs choisis 
                     string newByteString = String.Join(",", vecteurLigne);
 
-                    //nous convertissions la chaine de characteres a un byte array
+                    //nous convertissions la chaîne de caractères a un byte array
                     byte[] bytes = Encoding.UTF8.GetBytes(newByteString);
                     
                     //init un objet Participant avec les attributs de la classe
@@ -109,7 +112,12 @@ namespace TP_1_420_216_FX
             }
                     return listeParticipants;
         }
-
+        
+        /// <summary>
+        /// Permet de charger les données du fichier Joueur
+        /// </summary>
+        /// <param name="cheminFichier"></param>
+        /// <returns></returns>
         public static Joueur[] ChargerJoueur(string cheminFichier)
         {
             //compteur pour créer les objets Joueur
@@ -119,17 +127,17 @@ namespace TP_1_420_216_FX
             var nbrLignes = File.ReadLines(cheminFichier).Count();
             Joueur[] listeJoueur = new Joueur[nbrLignes];
 
-            //lecture du fichier text
+            //lecture du fichier texte
             using (StreamReader lecture = new StreamReader(cheminFichier))
             {
 
                 string ligne;
 
-                // Lecture des lignes du fichier jusqu'a la fin du fichier
+                // Lecture des lignes du fichier jusqu'à la fin du fichier
                 while ((ligne = lecture.ReadLine()) != null)
                 {
                     
-                    //split la ligne pour ajouter chaque element de la ligne a un vecteur
+                    //split la ligne pour ajouter chaque élément de la ligne a un vecteur
                     //joueurs avant d'initialiser un objet Joueur 
                     var joueurs = ligne.Split(',');
 
@@ -143,7 +151,7 @@ namespace TP_1_420_216_FX
                     byte nbAides = Convert.ToByte(joueurs[5]);
                     short plusOuMoins = Convert.ToInt16(joueurs[6]);
 
-                    //Enleve l'espace de l'element du veteur
+                    //Enlève l'espace de l'élément du vecteur
                     string positionJoueur = joueurs[2].Trim();
                     
                     //Switch pour déterminer la position du joueur 
@@ -170,14 +178,14 @@ namespace TP_1_420_216_FX
                             break;
                     }
                     
-                    //init des objets StatsJoueurs, Joueur  avant d'ajouter au vecteur d'objet joueur
+                    //Initialisation des objets StatsJoueurs, Joueur  avant d'ajouter au vecteur d'objet joueur
                     StatsJoueur statusUn = new StatsJoueur(nbButs, nbAides, plusOuMoins);
                     Joueur unJoueur = new Joueur(joueurs[0], joueurs[1], (PositionHockey)indexPostition, Convert.ToUInt32(joueurs[3]), statusUn);
 
                     //Console.WriteLine(unJoueur);
                     listeJoueur[nbrJoueurs] = unJoueur;
 
-                    //compteur pour itérer les lignes du fichier text, +1 a chaque itération
+                    //compteur pour itérer les lignes du fichier texte, +1 a chaque itération
                     nbrJoueurs += 1;
                 }
             }
@@ -185,34 +193,41 @@ namespace TP_1_420_216_FX
             return listeJoueur;
         }
 
+        /// <summary>
+        /// Méthode permettant d'enregistrer les participants
+        /// </summary>
         public static void EnregistrerPArticipants()
         {
             Console.WriteLine("enregistré");
         }
-
+        /// <summary>
+        /// Permet de formater pour l'affichage une chaîne de caractères en format casse Pascal ou casse mixte.
+        /// </summary>
+        /// <param name="chaineNonPascale"></param>
+        /// <returns></returns>
         public static string FormaterChainePascalOuMixte(string chaineNonPascale)
         {
-            //declaration de variables pour créer une chaine en format pascale
+            //Déclaration de variables pour créer une chaîne en format pascale
             // et un compteur pour identifier la place ou il y a des majuscules dans 
-            // la chaine de characteres
+            // la chaîne de caractères
             string chainePascale = String.Empty;
             int compteur = 0;
 
-            //iteration sur la chaine de charactere
+            //Itération sur la chaîne de caractères
             for(int i=0; i< chaineNonPascale.Length;i++)
             {
-                //si charactere majuscule, +1 au compteur
+                //Si caractère majuscule, +1 au compteur
                 if(char.IsUpper(chaineNonPascale[i]))
                 {
                     compteur++;
-                    //si plus de 1 char majuscule, on insere un espace a la place
-                    // du deuxieme char majuscule et on converti en minuscule
+                    //si plus de 1 char majuscule, on insère un espace a la place
+                    // du deuxième char majuscule et on converti en minuscule
                     if (compteur >= 2)
                     {
                         chainePascale = chaineNonPascale.Insert(i, " ");
                         chainePascale = chainePascale.ToLower();
                     }
-                    //sinon on converti toute la chaine en minuscule sans l'ajout d'espace
+                    //sinon on converti toute la chaîne en minuscule sans l'ajout d'espace
                     else
                     {
                         chainePascale = chaineNonPascale.ToLower();
