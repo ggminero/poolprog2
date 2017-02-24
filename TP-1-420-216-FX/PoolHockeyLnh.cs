@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace TP_1_420_216_FX
 {
+    /// <summary>
+    /// Classe représentant le pool de hockey de la LNH
+    /// </summary>
     public class PoolHockeyLnh
     {
-        /// <summary>
-        /// Classe représentant le pool de hockey de la LNH
-        /// </summary>
-        
         #region CONSTANTES PUBLIQUES
 
         /// <summary>

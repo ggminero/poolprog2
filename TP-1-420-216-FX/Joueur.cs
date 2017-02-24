@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TP_1_420_216_FX
 {
+    /// <summary>
+    /// Classe représentant un joueur de hockey.
+    /// </summary>
     public class Joueur
     {
         #region ATTRIBUTS
@@ -69,7 +72,7 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Numéro permettant d'obtenir la photo du joueur.
         /// </summary>
-        public uint noPhoto
+        public uint NoPhoto
         {
             get { return this._noPhoto; }
             private set { this._noPhoto = value; }
@@ -89,11 +92,10 @@ namespace TP_1_420_216_FX
         #region ToString
         public override string ToString()
         {
-            string positionFormat = Position.ToString();
+            string positionFormat = this.Position.ToString();
 
-            int points = Stats.NbButs + Stats.NbAides + Stats.PlusOuMoins / 2;
-            string joueur = String.Format("{0,-18} {1,-15} ({2,-4}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
-                Nom, Utilitaire.FormaterChainePascalOuMixte(positionFormat), Code, Stats.NbButs, Stats.NbAides, Stats.PlusOuMoins, points);
+            int points = this.Stats.NbButs + this.Stats.NbAides + this.Stats.PlusOuMoins / 2;
+            string joueur = String.Format("{0,-18} {1,-15} ({2,-4}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ", this.Nom, Utilitaire.FormaterChainePascalOuMixte(positionFormat), this.Code, this.Stats.NbButs, this.Stats.NbAides, this.Stats.PlusOuMoins, points);
 
             return joueur;
         }
@@ -109,13 +111,12 @@ namespace TP_1_420_216_FX
         /// <param name="position">Position du joueur.</param>
         /// <param name="noPhoto">Numéro permettant d'obtenir la photo du joueur.</param>
         /// <param name="stats">Les statistiques du joueur.</param>
-        /// </summary>
         public Joueur(String nom, String code, PositionHockey position, uint noPhoto, StatsJoueur stats)
         {
             this.Code = code;
             this.Nom = nom;
             this.Position = position;
-            this.noPhoto = noPhoto;
+            this.NoPhoto = noPhoto;
             this.Stats = stats;
         }
 

@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace TP_1_420_216_FX
 {
-    class Utilitaire
+    public static class Utilitaire
     {
 
         /// <summary>
