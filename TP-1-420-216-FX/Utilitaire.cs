@@ -11,6 +11,10 @@ namespace TP_1_420_216_FX
     class Utilitaire
     {
 
+        /// <summary>
+        /// Méthode permetant de charger les participats a partir d'un fichier texte
+        /// </summary>
+        /// <param name="cheminFichier"></param>
         public static Participant[] ChargerParticipants(string cheminFichier)
         {
             //compteur pour créer les objets Participant
@@ -53,6 +57,45 @@ namespace TP_1_420_216_FX
                     return listeParticipants;
         }
 
+        /// <summary>
+        /// Méthode permetant de charger les équipes a partir d'un fichier texte
+        /// </summary>
+        /// <param name="cheminFichier"></param>
+        public static Equipe[] ChargerEquipes(string cheminFichier)
+        {
+            int nbrEquipes = 0;
+
+            var nbrLignes = File.ReadLines(cheminFichier).Count();
+            Equipe[] listeEquipes = new Equipe[nbrLignes];
+
+            using (StreamReader lecture = new StreamReader(cheminFichier))
+            {
+                string ligne;
+
+                // Lecture des lignes du fichier jusqu'a la fin du fichier
+                while ((ligne = lecture.ReadLine()) != null)
+                {
+                    List<String> vecteurLigne = new List<String>(ligne.Split(','));
+
+
+                    Equipe unEquipe = new Equipe(vecteurLigne[0], vecteurLigne[1], vecteurLigne[2]);
+                    listeEquipes[nbrEquipes] = unEquipe;
+
+                    nbrEquipes += 1;
+                }
+            }
+            for (int i=0; i<nbrLignes; i++)
+            {
+                Console.WriteLine(listeEquipes[i].Nom);
+            }
+            
+            return listeEquipes;
+        }
+
+        /// <summary>
+        /// Méthode permetant de charger les joueurs a partir d'un fichier texte
+        /// </summary>
+        /// <param name="cheminFichier"></param>
         public static Joueur[] ChargerJoueur(string cheminFichier)
         {
             //compteur pour créer les objets Joueur
@@ -128,11 +171,20 @@ namespace TP_1_420_216_FX
             return listeJoueur;
         }
 
+        /// <summary>
+        /// Méthode permetant d'enregistrer les participants si il y a eu
+        /// lieu des changement a leur joueurs sur la forme
+        /// </summary>
+        /// <param name="x"></param>
         public static void EnregistrerPArticipants()
         {
             Console.WriteLine("enregistré");
         }
 
+        /// <summary>
+        /// Méthode permetant de formatter une chaine pascal
+        /// </summary>
+        /// <param name="chaineNonPascale"></param>
         public static string FormaterChainePascalOuMixte(string chaineNonPascale)
         {
             //declaration de variables pour créer une chaine en format pascale

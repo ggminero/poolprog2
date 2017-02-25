@@ -17,6 +17,8 @@ namespace TP_1_420_216_FX
 
         Participant[] _lesParts = Utilitaire.ChargerParticipants("participants.txt");
 
+        Equipe[] _lesEquipes = Utilitaire.ChargerEquipes("equipes.txt");
+
         public FormPoolHockey()
         {
             InitializeComponent();
@@ -84,7 +86,7 @@ namespace TP_1_420_216_FX
                 if (joueurSelect.Contains(joueur.Nom))
                 {
                     //on obtien le ID de la photo du joueur
-                    joueurPhotoId = joueur.noPhoto;
+                    joueurPhotoId = joueur.NoPhoto;
                     joueurCode = joueur.Code;
                     joueurButs = joueur.Stats.NbButs;
                     joueurAide = joueur.Stats.NbAides;
