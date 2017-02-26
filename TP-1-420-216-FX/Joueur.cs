@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_1_420_216_FX
 {
-    class Joueur
+    public class Joueur
     {
         #region ATTRIBUTS
 
@@ -53,8 +53,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public String Nom
         {
-            get { return this._nom; }
-            private set { this._nom = value; }
+            get { return _nom; }
+            private set { _nom = value; }
         }
 
         /// <summary>
@@ -62,8 +62,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public PositionHockey Position
         {
-            get { return this._position; }
-            private set { this._position = value; }
+            get { return _position; }
+            private set { _position = value; }
         }
 
         /// <summary>
@@ -80,8 +80,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public StatsJoueur Stats
         {
-            get { return this._stats; }
-            private set { this._stats = value; }
+            get { return _stats; }
+            private set { _stats = value; }
         }
 
         #endregion
@@ -89,12 +89,12 @@ namespace TP_1_420_216_FX
         #region ToString
         public override string ToString()
         {
-            int points = Stats.NbButs + Stats.NbAides + Stats.PlusOuMoins / 2;
 
             var positonFormat = Position.ToString();
 
             string joueur = String.Format("{0,-18} {1,-15} ({2,-4}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
-                Nom, Utilitaire.FormaterChainePascalOuMixte(positonFormat), Code, Stats.NbButs, Stats.NbAides, Stats.PlusOuMoins, points);
+                Nom, Utilitaire.FormaterChainePascalOuMixte(positonFormat), Code, Stats.NbButs, Stats.NbAides, 
+                Stats.PlusOuMoins, Stats.NbPointsPool());
 
             return joueur;
         }

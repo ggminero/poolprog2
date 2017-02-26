@@ -34,8 +34,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public byte[]  VectNoJoueurPool
         {
-            get { return this._vectNoJoueurPool; }
-            private set { this._vectNoJoueurPool = value; }
+            get { return _vectNoJoueurPool; }
+            private set { _vectNoJoueurPool = value; }
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public String Nom
         {
-            get { return this._nom; }
-            private set { this._nom = value; }
+            get { return _nom; }
+            private set { _nom = value; }
         }
         
         #endregion
@@ -68,8 +68,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public Participant(String nom, byte[] vectNoJoueurPool)
         {
-            this.VectNoJoueurPool = vectNoJoueurPool;
-            this.Nom = nom;
+            _vectNoJoueurPool = vectNoJoueurPool;
+            _nom = nom;
         }
 
         #endregion

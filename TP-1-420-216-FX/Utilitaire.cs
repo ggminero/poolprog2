@@ -83,11 +83,7 @@ namespace TP_1_420_216_FX
 
                     nbrEquipes += 1;
                 }
-            }
-            for (int i=0; i<nbrLignes; i++)
-            {
-                Console.WriteLine(listeEquipes[i].Nom);
-            }
+            }          
             
             return listeEquipes;
         }
@@ -176,7 +172,7 @@ namespace TP_1_420_216_FX
         /// lieu des changement a leur joueurs sur la forme
         /// </summary>
         /// <param name="x"></param>
-        public static void EnregistrerPArticipants()
+        public static void EnregistrerParticipants()
         {
             Console.WriteLine("enregistré");
         }

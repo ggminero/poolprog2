@@ -50,18 +50,21 @@
             // labelNometPos
             // 
             this.labelNometPos.AutoSize = true;
-            this.labelNometPos.Location = new System.Drawing.Point(162, 34);
+            this.labelNometPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNometPos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelNometPos.Location = new System.Drawing.Point(201, 9);
             this.labelNometPos.Name = "labelNometPos";
-            this.labelNometPos.Size = new System.Drawing.Size(74, 13);
+            this.labelNometPos.Size = new System.Drawing.Size(189, 31);
             this.labelNometPos.TabIndex = 0;
             this.labelNometPos.Text = "nomEtPosition";
             // 
             // labelNomEquipEtVille
             // 
             this.labelNomEquipEtVille.AutoSize = true;
+            this.labelNomEquipEtVille.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNomEquipEtVille.Location = new System.Drawing.Point(131, 99);
             this.labelNomEquipEtVille.Name = "labelNomEquipEtVille";
-            this.labelNomEquipEtVille.Size = new System.Drawing.Size(89, 13);
+            this.labelNomEquipEtVille.Size = new System.Drawing.Size(105, 13);
             this.labelNomEquipEtVille.TabIndex = 1;
             this.labelNomEquipEtVille.Text = "nomEquipeEtVille";
             // 
@@ -75,7 +78,7 @@
             this.groupBoxStats.Controls.Add(this.labelButs);
             this.groupBoxStats.Location = new System.Drawing.Point(25, 156);
             this.groupBoxStats.Name = "groupBoxStats";
-            this.groupBoxStats.Size = new System.Drawing.Size(144, 155);
+            this.groupBoxStats.Size = new System.Drawing.Size(144, 110);
             this.groupBoxStats.TabIndex = 2;
             this.groupBoxStats.TabStop = false;
             this.groupBoxStats.Text = "Statistiques";
@@ -83,78 +86,88 @@
             // labelPlusMoinPoints
             // 
             this.labelPlusMoinPoints.AutoSize = true;
-            this.labelPlusMoinPoints.Location = new System.Drawing.Point(99, 111);
+            this.labelPlusMoinPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlusMoinPoints.Location = new System.Drawing.Point(73, 81);
             this.labelPlusMoinPoints.Name = "labelPlusMoinPoints";
-            this.labelPlusMoinPoints.Size = new System.Drawing.Size(65, 13);
+            this.labelPlusMoinPoints.Size = new System.Drawing.Size(76, 13);
             this.labelPlusMoinPoints.TabIndex = 8;
             this.labelPlusMoinPoints.Text = "nbrPlusMoin";
             // 
             // labelAidesPoints
             // 
             this.labelAidesPoints.AutoSize = true;
-            this.labelAidesPoints.Location = new System.Drawing.Point(99, 72);
+            this.labelAidesPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAidesPoints.Location = new System.Drawing.Point(73, 57);
             this.labelAidesPoints.Name = "labelAidesPoints";
-            this.labelAidesPoints.Size = new System.Drawing.Size(48, 13);
+            this.labelAidesPoints.Size = new System.Drawing.Size(56, 13);
             this.labelAidesPoints.TabIndex = 7;
             this.labelAidesPoints.Text = "nbrAides";
             // 
             // labelButsPoints
             // 
             this.labelButsPoints.AutoSize = true;
-            this.labelButsPoints.Location = new System.Drawing.Point(99, 35);
+            this.labelButsPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelButsPoints.Location = new System.Drawing.Point(73, 35);
             this.labelButsPoints.Name = "labelButsPoints";
-            this.labelButsPoints.Size = new System.Drawing.Size(43, 13);
+            this.labelButsPoints.Size = new System.Drawing.Size(50, 13);
             this.labelButsPoints.TabIndex = 6;
             this.labelButsPoints.Text = "nbrButs";
             // 
             // labelPlusMoins
             // 
             this.labelPlusMoins.AutoSize = true;
-            this.labelPlusMoins.Location = new System.Drawing.Point(15, 111);
+            this.labelPlusMoins.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlusMoins.Location = new System.Drawing.Point(15, 81);
             this.labelPlusMoins.Name = "labelPlusMoins";
-            this.labelPlusMoins.Size = new System.Drawing.Size(21, 13);
+            this.labelPlusMoins.Size = new System.Drawing.Size(32, 13);
             this.labelPlusMoins.TabIndex = 5;
-            this.labelPlusMoins.Text = "+/-";
+            this.labelPlusMoins.Text = "+/- :";
             // 
             // labelAides
             // 
             this.labelAides.AutoSize = true;
-            this.labelAides.Location = new System.Drawing.Point(15, 72);
+            this.labelAides.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAides.Location = new System.Drawing.Point(15, 57);
             this.labelAides.Name = "labelAides";
-            this.labelAides.Size = new System.Drawing.Size(33, 13);
+            this.labelAides.Size = new System.Drawing.Size(46, 13);
             this.labelAides.TabIndex = 4;
-            this.labelAides.Text = "Aides";
+            this.labelAides.Text = "Aides :";
             // 
             // labelButs
             // 
             this.labelButs.AutoSize = true;
+            this.labelButs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelButs.Location = new System.Drawing.Point(15, 35);
             this.labelButs.Name = "labelButs";
-            this.labelButs.Size = new System.Drawing.Size(28, 13);
+            this.labelButs.Size = new System.Drawing.Size(40, 13);
             this.labelButs.TabIndex = 3;
-            this.labelButs.Text = "Buts";
+            this.labelButs.Text = "Buts :";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 332);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Maroon;
+            this.label9.Location = new System.Drawing.Point(22, 288);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 13);
+            this.label9.Size = new System.Drawing.Size(113, 17);
             this.label9.TabIndex = 9;
-            this.label9.Text = "Poits au pool";
+            this.label9.Text = "Poits au pool :";
             // 
             // labelPointsPool
             // 
             this.labelPointsPool.AutoSize = true;
-            this.labelPointsPool.Location = new System.Drawing.Point(118, 332);
+            this.labelPointsPool.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPointsPool.ForeColor = System.Drawing.Color.Maroon;
+            this.labelPointsPool.Location = new System.Drawing.Point(134, 288);
             this.labelPointsPool.Name = "labelPointsPool";
-            this.labelPointsPool.Size = new System.Drawing.Size(51, 13);
+            this.labelPointsPool.Size = new System.Drawing.Size(77, 17);
             this.labelPointsPool.TabIndex = 10;
             this.labelPointsPool.Text = "nbrPoints";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(25, 374);
+            this.button1.Location = new System.Drawing.Point(25, 322);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 11;
@@ -163,9 +176,9 @@
             // 
             // pictureBoxJoueur
             // 
-            this.pictureBoxJoueur.Location = new System.Drawing.Point(313, 62);
+            this.pictureBoxJoueur.Location = new System.Drawing.Point(291, 62);
             this.pictureBoxJoueur.Name = "pictureBoxJoueur";
-            this.pictureBoxJoueur.Size = new System.Drawing.Size(294, 283);
+            this.pictureBoxJoueur.Size = new System.Drawing.Size(316, 283);
             this.pictureBoxJoueur.TabIndex = 12;
             this.pictureBoxJoueur.TabStop = false;
             // 
@@ -181,7 +194,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 409);
+            this.BackColor = System.Drawing.Color.LightBlue;
+            this.ClientSize = new System.Drawing.Size(642, 355);
             this.Controls.Add(this.pictureBoxEquipe);
             this.Controls.Add(this.pictureBoxJoueur);
             this.Controls.Add(this.button1);
