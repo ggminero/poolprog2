@@ -13,6 +13,13 @@ namespace TP_1_420_216_FX
     public partial class FormFicheJoueur : Form
     {
         #region ATTRIBUTS
+        //private uint _joueurPhotoId;
+        //private string _joueurCode;
+        //private int _joueurButs;
+        //private int _joueurAide;
+        //private int _joueurPlusMoin;
+        //private int _joueurPoints;
+
         /// <summary>
         /// Le Joueur selectionné
         /// </summary>
