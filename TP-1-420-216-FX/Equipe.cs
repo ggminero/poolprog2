@@ -46,8 +46,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public String Code
         {
-            get { return this._code; }
-            private set { this._code = value; }
+            get { return _code; }
+            private set { _code = value; }
         }
 
         /// <summary>
@@ -55,8 +55,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public String Nom
         {
-            get { return this._nom; }
-            private set { this._nom = value; }
+            get { return _nom; }
+            private set { _nom = value; }
         }
 
         /// <summary>
@@ -64,8 +64,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public String Ville
         {
-            get { return this._ville; }
-            private set { this._ville = value; }
+            get { return _ville; }
+            private set { _ville = value; }
         }
 
         #endregion
@@ -80,9 +80,9 @@ namespace TP_1_420_216_FX
         /// <param name="ville">Ville où est située l'équipe.</param>
         public Equipe(String code, String nom, String ville)
         {
-            this.Code = code;
-            this.Nom = nom;
-            this.Ville = ville;
+            Code = code;
+            Nom = nom;
+            Ville = ville;
         }
 
         #endregion

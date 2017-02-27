@@ -46,8 +46,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public byte NbButs
         {
-            get { return this._nbButs; }
-            private set { this._nbButs = value; }
+            get { return _nbButs; }
+            private set { _nbButs = value; }
         }
 
         /// <summary>
@@ -55,8 +55,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public byte NbAides
         {
-            get { return this._nbAides; }
-            private set { this._nbAides = value; }
+            get { return _nbAides; }
+            private set { _nbAides = value; }
         }
 
         /// <summary>
@@ -64,8 +64,8 @@ namespace TP_1_420_216_FX
         /// </summary>
         public short PlusOuMoins
         {
-            get { return this._plusOuMoins; }
-            private set { this._plusOuMoins = value; }
+            get { return _plusOuMoins; }
+            private set { _plusOuMoins = value; }
         }
 
         #endregion
@@ -80,9 +80,9 @@ namespace TP_1_420_216_FX
         /// <param name="plusOuMoins">Plus ou moins du joueur.</param>
         public StatsJoueur(byte nbButs, byte nbAides, short plusOuMoins)
         {
-            this.NbButs = nbButs;
-            this.NbAides = nbAides;
-            this.PlusOuMoins = plusOuMoins;
+            NbButs = nbButs;
+            NbAides = nbAides;
+            PlusOuMoins = plusOuMoins;
         }
 
         #endregion
@@ -95,7 +95,9 @@ namespace TP_1_420_216_FX
         /// <returns>Nombre de points pour le pool de hockey.</returns>
         public short NbPointsPool()
         {
-            throw new NotImplementedException();
+            int totPoints = (NbAides + NbButs + (PlusOuMoins / 2));
+            short shortPoints = Convert.ToInt16(totPoints);
+            return shortPoints;
         }
 
         #endregion

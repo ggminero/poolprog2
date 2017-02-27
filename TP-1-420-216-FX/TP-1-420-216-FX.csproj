@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Joueur.cs" />
     <Compile Include="Participant.cs" />
+    <Compile Include="PoolHockeyLnh.cs" />
     <Compile Include="Utilitaire.cs" />
     <Compile Include="Equipe.cs" />
     <Compile Include="FormPoolHockeyLnh.cs">

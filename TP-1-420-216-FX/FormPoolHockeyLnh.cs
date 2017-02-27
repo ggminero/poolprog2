@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -14,22 +13,21 @@ namespace TP_1_420_216_FX
 {
     public partial class FormPoolHockey : Form
     {
-        Joueur[] _lesJoueurs = Utilitaire.ChargerJoueur("joueurs_stats.txt");
-
-        Participant[] _lesParts = Utilitaire.ChargerParticipants("participants.txt");
-
+        //init du pool de hockey dans la forme
+        PoolHockeyLnh lePool = new PoolHockeyLnh();
+        
         public FormPoolHockey()
         {
             InitializeComponent();
 
             //Initialize les listBox avec les données chargées a partire de la classe Utilitaire
-            listBoxParticipants.DataSource = _lesParts;     //Utilitaire.ChargerParticipants("participants.txt");
-            listBoxJoueurs.DataSource = _lesJoueurs;        //Utilitaire.ChargerJoueur("joueurs_stats.txt");
+            listBoxParticipants.DataSource = lePool.lesParticipants;    
+            listBoxJoueurs.DataSource = lePool.lesJoueurs;        
 
             //enleve la selection par défault des elements de type listbox
             listBoxParticipants.ClearSelected();
             listBoxJoueurs.ClearSelected();
-            comboBoxEchange.Visible = false;
+            comboBoxEchange.Visible = false;          
 
         }
 
@@ -40,7 +38,7 @@ namespace TP_1_420_216_FX
         /// <param name="e"></param>
         private void cmdQuitter_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -50,7 +48,7 @@ namespace TP_1_420_216_FX
         /// <param name="e"></param>
         private void cmdEnregistrer_Click(object sender, EventArgs e)
         {
-            Utilitaire.EnregistrerPArticipants();
+            Utilitaire.EnregistrerParticipants();
 
         }
 
@@ -61,47 +59,38 @@ namespace TP_1_420_216_FX
         /// <param name="e"></param>
         private void btnVoirFiche_Click(object sender, EventArgs e)
         {
-            uint joueurPhotoId = 0;
-            string joueurCode = String.Empty;
-            int joueurButs = 0;
-            int joueurAide = 0;
-            int joueurPlusMoin = 0;
-            int joueurPoints = 0;
-            string nomEtPosition = String.Empty;
-            string equipeEtVille = String.Empty;
+            // variables locals pour avoir les joueurs et équipes
+            Joueur[] lesJoueurs = lePool.lesJoueurs;
+            Equipe[] lesEquipes = lePool.lesEquipes;
 
-            // Retourne le participant selectionné de la ListBox.
-            string joueurSelect = listBoxJoueurs.SelectedItem.ToString();
+            // Retourne le participant selectionné de la ListBox avec stats en vecteur
+            var nomJoueurSelect = listBoxJoueurs.SelectedItem.ToString().Split(' ');
+            
+            //On additione les 2 premiers éléments du vecteur pour avoir le nom
+            string joueurSelect = nomJoueurSelect[0] +" "+ nomJoueurSelect[1]; //listBoxJoueurs.SelectedItem.ToString();
 
             // Retourne l'index du participant selectionné de la ListBox.
             int partIndex = listBoxJoueurs.FindString(joueurSelect);
-
-            Joueur[] lesJoueurs = _lesJoueurs;
-
+            
             //iteration sur la liste des joueurs
-            foreach (Joueur joueur in _lesJoueurs)
+            foreach (Joueur joueur in lesJoueurs)
             {
                 // si le nom dans la chaine de characteres
                 if (joueurSelect.Contains(joueur.Nom))
                 {
-                    //on obtien le ID de la photo du joueur
-                    joueurPhotoId = joueur.NoPhoto;
-                    joueurCode = joueur.Code;
-                    joueurButs = joueur.Stats.NbButs;
-                    joueurAide = joueur.Stats.NbAides;
-                    joueurPlusMoin = joueur.Stats.PlusOuMoins;
-                    joueurPoints = joueurButs + joueurAide + (joueurPlusMoin / 2);
-
-
-                    Console.WriteLine(joueurPhotoId);
+                    lePool.RechercherIndiceJoueur(joueur);
+                    //iteration sur la liste des equipes
+                    foreach (Equipe equipe in lesEquipes)
+                    {
+                        //Si le code d'équipe est au code dequipe du joueurs on init la fiche du joueur
+                        if (equipe.Code.Trim().Contains(joueur.Code.Trim()))
+                        {
+                            FormFicheJoueur formJoueur = new FormFicheJoueur(equipe, joueur);
+                            formJoueur.ShowDialog();
+                        }
+                    }
                 }
-
             }
-            
-            FormFicheJoueur formJoueur = new FormFicheJoueur(joueurPhotoId, joueurCode, 
-                joueurButs, joueurAide, joueurPlusMoin, joueurPoints);
-
-            formJoueur.ShowDialog();
         }
 
         /// <summary>
@@ -159,18 +148,19 @@ namespace TP_1_420_216_FX
                 // set la listBox de joueurs a null pour pouvoir rafréshire les elements
                 listBoxJoueurs.DataSource = null;
 
-                Joueur[] lesJoueurs = _lesJoueurs;
+                Joueur[] lesJoueurs = lePool.lesJoueurs;
 
                 //iteration sur la liste de participants
-                foreach (Participant part in _lesParts)
+                foreach (Participant part in lePool.lesParticipants)
                 {
+
+                    //crée une liste a partir du vecteur bytes
+                    var joueursSelect = Encoding.UTF8.GetString(part.VectNoJoueurPool).Split(',');
+
                     // si le nom est le bon
                     if (part.Nom.Equals(partSelect))
                     {
-
-                        //crée une liste a partir du vecteur bytes
-                        var joueursSelect = Encoding.UTF8.GetString(part.VectNoJoueurPool).Split(',');
-
+                       
                         //on clear la listbox de joueurs
                         listBoxJoueurs.Items.Clear();
                         //iteration sur la liste de joueurs selectionné
@@ -180,7 +170,7 @@ namespace TP_1_420_216_FX
                         {
                             foreach (var joueur in joueursSelect)
                             {
-                                listBoxJoueurs.Items.Add(_lesJoueurs[Int32.Parse(joueur) - 1]);
+                                listBoxJoueurs.Items.Add(lePool.lesJoueurs[Int32.Parse(joueur) - 1]);
                             }
                         }
                         
@@ -191,8 +181,9 @@ namespace TP_1_420_216_FX
 
                 //change le nom du participant a afficher dans la groupBox
                 labelNom.Text = partSelect;
+
                 //change le nombre de points du participant a afficher dans la groupBox
-                foreach (var joueur in _lesJoueurs)
+                foreach (var joueur in lePool.lesJoueurs)
                 {
                     //si le joueur est déja dans la liste, on calcul les points
                     if (listBoxJoueurs.Items.Contains(joueur))
@@ -200,7 +191,8 @@ namespace TP_1_420_216_FX
                         pointsPool += joueur.Stats.NbAides + joueur.Stats.NbButs + joueur.Stats.PlusOuMoins / 2;
                     }
                 }
-                //assigne la variable et converti a chaine de charactere                labelNbrPoints.Text = pointsPool.ToString();
+                //assigne la variable et converti a chaine de charactere
+                labelNbrPoints.Text = pointsPool.ToString();
             }
             else
             {
@@ -223,7 +215,7 @@ namespace TP_1_420_216_FX
             //Remplissage de ComboBox Echanger avec les valeurs de la méthode retourné de
             //de chargerjoueur de la classe utilitaire. On exclue les joueurs déja choisi
             //iteration sur la liste de joueurs
-            foreach (var joueur in _lesJoueurs)
+            foreach (var joueur in lePool.lesJoueurs)
             {
                 //si le joueur est déja dasn la liste, on n'ajoute pas a la comboBox
                 if (!listBoxJoueurs.Items.Contains(joueur))
@@ -247,14 +239,12 @@ namespace TP_1_420_216_FX
             groupBoxParticipant.Visible = false;
             btnEchangerJoueur.Enabled = false;
             btnVoirFiche.Enabled = false;
-            listBoxJoueurs.DataSource = _lesJoueurs;
+            listBoxJoueurs.DataSource = lePool.lesJoueurs;
             //enleve la selection par défault des elements de type listbox
             listBoxParticipants.ClearSelected();
             listBoxJoueurs.ClearSelected();
 
         }
         
-
-
     }
 }
