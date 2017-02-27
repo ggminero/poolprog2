@@ -1,0 +1,14 @@
+Rabah Archambault, 1, 3, 7, 8, 11, 15, 26, 31, 33, 37
+Helsa Grondin, 2, 9, 10, 12, 15, 20, 23, 27, 38, 40
+Max Bégin, 3, 4, 5, 12, 14, 18, 22, 25, 38, 39
+Cédrick Boudreault, 1, 4, 6, 13, 17, 19, 21, 23, 25, 36
+Michael Ducharme, 3, 5, 8, 9, 16, 17, 20, 21, 35, 40
+Émile Gagnon, 2, 3, 6, 10, 12, 15, 16, 21, 22, 30
+Silvia Plante, 5, 6, 7, 11, 13, 16, 29, 32, 35, 38
+Maxime Lévesque, 1, 40
+Maombi Maheux
+Guillaume Métivier, 1
+Dominique Régis, 39, 40
+Samuel Moreau, 4, 5, 6
+Samy Veilleux, 2, 4, 6, 8
+Charles Villeneuve, 1, 3, 5, 7, 9
