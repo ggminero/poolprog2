@@ -46,25 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormFicheJoueur.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormFicheJoueur.Designer.cs">
-      <DependentUpon>FormFicheJoueur.cs</DependentUpon>
-    </Compile>
     <Compile Include="Joueur.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="PoolHockeyLnh.cs" />
     <Compile Include="Utilitaire.cs" />
     <Compile Include="Equipe.cs" />
-    <Compile Include="FormPoolHockeyLnh.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPoolHockeyLnh.Designer.cs">
-      <DependentUpon>FormPoolHockeyLnh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPoolHockeyLnh.cs" />
-    <Compile Include="PoolHockeyLnh.cs" />
     <Compile Include="PositionHockey.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
