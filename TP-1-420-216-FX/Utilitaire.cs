@@ -23,7 +23,7 @@ namespace TP_1_420_216_FX
             //nombre de lignes dans le fichier texte pour déterminer la longueur du vecteur Participant
             var nbrLignes = File.ReadLines(cheminFichier).Count();
             Participant[] listeParticipants = new Participant[nbrLignes];
-            
+            Console.WriteLine(nbrLignes);
             //lecture du fichier text
             using (StreamReader lecture = new StreamReader(cheminFichier))
             {
@@ -36,7 +36,7 @@ namespace TP_1_420_216_FX
                     //split la ligne a un vecteur
                     List<String> vecteurLigne = new List<String>(ligne.Split(','));
 
-                    string nom = vecteurLigne[0];
+                    string nom = vecteurLigne[0].Trim();
 
                     //Enleve le nom du vecteur pour avoir que des numéros de joueurs choisis 
                     vecteurLigne.RemoveAt(0);
@@ -78,7 +78,7 @@ namespace TP_1_420_216_FX
                     List<String> vecteurLigne = new List<String>(ligne.Split(','));
 
 
-                    Equipe unEquipe = new Equipe(vecteurLigne[0], vecteurLigne[1], vecteurLigne[2]);
+                    Equipe unEquipe = new Equipe(vecteurLigne[0].Trim(), vecteurLigne[1].Trim(), vecteurLigne[2].Trim());
                     listeEquipes[nbrEquipes] = unEquipe;
 
                     nbrEquipes += 1;
@@ -202,35 +202,23 @@ namespace TP_1_420_216_FX
         public static string FormaterChainePascalOuMixte(string chaineNonPascale)
         {
             //declaration de variables pour créer une chaine en format pascale
-            // et un compteur pour identifier la place ou il y a des majuscules dans 
-            // la chaine de characteres
+            // et on itere la chaine pour concatener des espaces avant une majuscule
+            //finallement, on enlève les espaces aux extremités et converti a Lower
             string chainePascale = String.Empty;
-            int compteur = 0;
-
-            //iteration sur la chaine de charactere
-            for(int i=0; i< chaineNonPascale.Length;i++)
+            
+            foreach(Char charactere in chaineNonPascale)
             {
-                //si charactere majuscule, +1 au compteur
-                if(char.IsUpper(chaineNonPascale[i]))
+                if(Char.IsUpper(charactere))
                 {
-                    compteur++;
-                    //si plus de 1 char majuscule, on insere un espace a la place
-                    // du deuxieme char majuscule et on converti en minuscule
-                    if (compteur >= 2)
-                    {
-                        chainePascale = chaineNonPascale.Insert(i, " ");
-                        chainePascale = chainePascale.ToLower();
-                    }
-                    //sinon on converti toute la chaine en minuscule sans l'ajout d'espace
-                    else
-                    {
-                        chainePascale = chaineNonPascale.ToLower();
-                    }
+                    chainePascale += " ";
+                    chainePascale += charactere.ToString();  
                 }
-
+                else
+                {
+                    chainePascale += charactere.ToString();
+                }
             }
-
-            return chainePascale;
+            return chainePascale.ToLower().Trim();
         }
 
     }

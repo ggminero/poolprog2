@@ -27,7 +27,7 @@ namespace TP_1_420_216_FX
             //enleve la selection par défault des elements de type listbox
             listBoxParticipants.ClearSelected();
             listBoxJoueurs.ClearSelected();
-            comboBoxEchange.Visible = false;          
+            comboBoxEchange.Visible = false;
 
         }
 
