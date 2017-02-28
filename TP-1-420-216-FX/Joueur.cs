@@ -13,7 +13,7 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Code de l'équipe du Joueur.
         /// </summary>
-        private String _code;
+        private String _codeEquipe ;
 
         /// <summary>
         /// Nom du Joueur.
@@ -42,10 +42,10 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Code de l'équipe du Joueur.
         /// </summary>
-        public String Code
+        public String CodeEquipe
         {
-            get { return this._code; }
-            private set { this._code = value; }
+            get { return _codeEquipe ; }
+            private set { _codeEquipe  = value; }
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace TP_1_420_216_FX
             var positonFormat = Position.ToString();
 
             string joueur = String.Format("{0,-18} {1,-15} ({2,-4}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
-                Nom, Utilitaire.FormaterChainePascalOuMixte(positonFormat), Code, Stats.NbButs, Stats.NbAides, 
+                Nom, Utilitaire.FormaterChainePascalOuMixte(positonFormat), CodeEquipe, Stats.NbButs, Stats.NbAides, 
                 Stats.PlusOuMoins, Stats.NbPointsPool());
 
             return joueur;
@@ -113,7 +113,7 @@ namespace TP_1_420_216_FX
         /// </summary>
         public Joueur(String nom, String code, PositionHockey position, uint noPhoto, StatsJoueur stats)
         {
-            _code = code;
+            _codeEquipe  = code;
             _nom = nom;
             _position = position;
             _noPhoto = noPhoto;

@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace TP_1_420_216_FX
 {
-    class Utilitaire
+    public class Utilitaire
     {
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace TP_1_420_216_FX
         /// Méthode permetant de charger les joueurs a partir d'un fichier texte
         /// </summary>
         /// <param name="cheminFichier"></param>
-        public static Joueur[] ChargerJoueur(string cheminFichier)
+        public static Joueur[] ChargerJoueurs(string cheminFichier)
         {
             //compteur pour créer les objets Joueur
             int nbrJoueurs = 0;

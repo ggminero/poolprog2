@@ -40,7 +40,7 @@ namespace TP_1_420_216_FX
         {
             // converti le utin a chaine de charactere pour la cosntruction du uri
             string PhotoId = _joueur.NoPhoto.ToString();
-            string codeId = _joueur.Code.Trim();
+            string codeId = _joueur.CodeEquipe.Trim();
             //on construil le uri avec string format avec l'id de la photo du joueur selectionné et le code de l'équipe
             pictureBoxJoueur.Load(String.Format(@"http://a.espncdn.com/combiner/i?img=/i/headshots/nhl/players/full/{0}.png&w=350&h=254", PhotoId));
             pictureBoxEquipe.Load(String.Format(@"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nhl/500/{0}.png&w=150&h=150&transparent=true", codeId));

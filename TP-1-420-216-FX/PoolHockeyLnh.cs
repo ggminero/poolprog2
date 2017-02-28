@@ -15,7 +15,7 @@ namespace TP_1_420_216_FX
 
     }
 
-    class PoolHockeyLnh
+    public class PoolHockeyLnh
     {
 
         #region ATTRIBUTS
@@ -42,7 +42,7 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Les Joueurs
         /// </summary>
-        public Joueur[] lesJoueurs
+        public Joueur[] LesJoueurs
         {
             get { return _lesJoueurs; }
             private set { _lesJoueurs = value; }
@@ -51,7 +51,7 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Les Equipes
         /// </summary>
-        public Equipe[] lesEquipes
+        public Equipe[] LesEquipes
         {
             get { return _lesEquipes; }
             private set { _lesEquipes = value; }
@@ -60,7 +60,7 @@ namespace TP_1_420_216_FX
         /// <summary>
         /// Code de l'équipe du Joueur.
         /// </summary>
-        public Participant[] lesParticipants
+        public Participant[] LesParticipants
         {
             get { return _lesParticipants; }
             private set { _lesParticipants = value; }
@@ -86,6 +86,7 @@ namespace TP_1_420_216_FX
                 if(codeEquipe.Equals(_lesEquipes[i].Code))
                 {
                     return _lesEquipes[i];
+                    
                 }
                 else
                 {
@@ -151,7 +152,7 @@ namespace TP_1_420_216_FX
         {
             _lesEquipes = Utilitaire.ChargerEquipes(Constants.FichierEquipes);
             _lesParticipants = Utilitaire.ChargerParticipants(Constants.FichierParticipants); ;
-            _lesJoueurs = Utilitaire.ChargerJoueur(Constants.FichierJoueursStats);
+            _lesJoueurs = Utilitaire.ChargerJoueurs(Constants.FichierJoueursStats);
         }
 
         #endregion

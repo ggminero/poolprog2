@@ -21,8 +21,8 @@ namespace TP_1_420_216_FX
             InitializeComponent();
 
             //Initialize les listBox avec les données chargées a partire de la classe Utilitaire
-            listBoxParticipants.DataSource = lePool.lesParticipants;    
-            listBoxJoueurs.DataSource = lePool.lesJoueurs;        
+            listBoxParticipants.DataSource = lePool.LesParticipants;    
+            listBoxJoueurs.DataSource = lePool.LesJoueurs;        
 
             //enleve la selection par défault des elements de type listbox
             listBoxParticipants.ClearSelected();
@@ -60,8 +60,8 @@ namespace TP_1_420_216_FX
         private void btnVoirFiche_Click(object sender, EventArgs e)
         {
             // variables locals pour avoir les joueurs et équipes
-            Joueur[] lesJoueurs = lePool.lesJoueurs;
-            Equipe[] lesEquipes = lePool.lesEquipes;
+            Joueur[] lesJoueurs = lePool.LesJoueurs;
+            Equipe[] lesEquipes = lePool.LesEquipes;
 
             // Retourne le participant selectionné de la ListBox avec stats en vecteur
             var nomJoueurSelect = listBoxJoueurs.SelectedItem.ToString().Split(' ');
@@ -83,7 +83,7 @@ namespace TP_1_420_216_FX
                     foreach (Equipe equipe in lesEquipes)
                     {
                         //Si le code d'équipe est au code dequipe du joueurs on init la fiche du joueur
-                        if (equipe.Code.Trim().Contains(joueur.Code.Trim()))
+                        if (equipe.Code.Trim().Contains(joueur.CodeEquipe.Trim()))
                         {
                             FormFicheJoueur formJoueur = new FormFicheJoueur(equipe, joueur);
                             formJoueur.ShowDialog();
@@ -148,10 +148,10 @@ namespace TP_1_420_216_FX
                 // set la listBox de joueurs a null pour pouvoir rafréshire les elements
                 listBoxJoueurs.DataSource = null;
 
-                Joueur[] lesJoueurs = lePool.lesJoueurs;
+                Joueur[] lesJoueurs = lePool.LesJoueurs;
 
                 //iteration sur la liste de participants
-                foreach (Participant part in lePool.lesParticipants)
+                foreach (Participant part in lePool.LesParticipants)
                 {
 
                     //crée une liste a partir du vecteur bytes
@@ -170,7 +170,7 @@ namespace TP_1_420_216_FX
                         {
                             foreach (var joueur in joueursSelect)
                             {
-                                listBoxJoueurs.Items.Add(lePool.lesJoueurs[Int32.Parse(joueur) - 1]);
+                                listBoxJoueurs.Items.Add(lePool.LesJoueurs[Int32.Parse(joueur) - 1]);
                             }
                         }
                         
@@ -183,7 +183,7 @@ namespace TP_1_420_216_FX
                 labelNom.Text = partSelect;
 
                 //change le nombre de points du participant a afficher dans la groupBox
-                foreach (var joueur in lePool.lesJoueurs)
+                foreach (var joueur in lePool.LesJoueurs)
                 {
                     //si le joueur est déja dans la liste, on calcul les points
                     if (listBoxJoueurs.Items.Contains(joueur))
@@ -215,7 +215,7 @@ namespace TP_1_420_216_FX
             //Remplissage de ComboBox Echanger avec les valeurs de la méthode retourné de
             //de chargerjoueur de la classe utilitaire. On exclue les joueurs déja choisi
             //iteration sur la liste de joueurs
-            foreach (var joueur in lePool.lesJoueurs)
+            foreach (var joueur in lePool.LesJoueurs)
             {
                 //si le joueur est déja dasn la liste, on n'ajoute pas a la comboBox
                 if (!listBoxJoueurs.Items.Contains(joueur))
@@ -239,7 +239,7 @@ namespace TP_1_420_216_FX
             groupBoxParticipant.Visible = false;
             btnEchangerJoueur.Enabled = false;
             btnVoirFiche.Enabled = false;
-            listBoxJoueurs.DataSource = lePool.lesJoueurs;
+            listBoxJoueurs.DataSource = lePool.LesJoueurs;
             //enleve la selection par défault des elements de type listbox
             listBoxParticipants.ClearSelected();
             listBoxJoueurs.ClearSelected();
