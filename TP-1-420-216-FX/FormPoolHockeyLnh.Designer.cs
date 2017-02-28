@@ -237,7 +237,7 @@
             this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.btnTousLesJoueurs);
             this.Name = "FormPoolHockey";
-            this.Text = "Pool de hockey de la LNH";
+            this.Text = "Pool de hockey de la LNH";          
             this.groupBoxParticipant.ResumeLayout(false);
             this.groupBoxParticipant.PerformLayout();
             this.ResumeLayout(false);

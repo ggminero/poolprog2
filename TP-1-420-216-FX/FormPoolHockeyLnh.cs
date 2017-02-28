@@ -48,7 +48,14 @@ namespace TP_1_420_216_FX
         /// <param name="e"></param>
         private void cmdEnregistrer_Click(object sender, EventArgs e)
         {
-            Utilitaire.EnregistrerParticipants();
+            // Variables locales pour appeler la méthode EnregistrerParticipants
+            Participant[] lesParticipants = lePool.LesParticipants;
+          
+            // Enregistrement des données
+            Utilitaire.EnregistrerParticipants(listBoxParticipants.Text, lesParticipants);
+
+            // MessageBox pour confirmer l'enregistrement des données
+            MessageBox.Show("L'enregistrement est réussi.");
 
         }
 
@@ -245,6 +252,7 @@ namespace TP_1_420_216_FX
             listBoxJoueurs.ClearSelected();
 
         }
-        
+
+
     }
 }

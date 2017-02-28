@@ -168,13 +168,31 @@ namespace TP_1_420_216_FX
         }
 
         /// <summary>
-        /// Méthode permetant d'enregistrer les participants si il y a eu
+        /// Méthode permettant d'enregistrer les participants si il y a eu
         /// lieu des changement a leur joueurs sur la forme
         /// </summary>
-        /// <param name="x"></param>
-        public static void EnregistrerParticipants()
+        /// <param name="cheminFichier"></param>
+        /// <param name="lesParticipants"></param>
+        public static void EnregistrerParticipants(String cheminFichier, Participant[] lesParticipants)
         {
-            Console.WriteLine("enregistré");
+            // Création du flux d'enregistrement du fichier participants
+            StreamWriter fluxEnregistrement = new StreamWriter(cheminFichier, false);
+
+            // Chaîne de caractères pour la version sérialisée d'un objet Participant
+            String participantTexte;
+
+            // Traitement de chaque objet Participant du vecteur
+            for (int i = 0; i < lesParticipants.Length; i++)
+            {
+                // Sérialisation de l'objet Personne
+                participantTexte = lesParticipants[i].Nom + ", " + lesParticipants[i].VectNoJoueurPool;
+
+                // Écriture de la version sérialisée d'un objet Participant
+                fluxEnregistrement.WriteLine(participantTexte);                                              
+            }
+
+            // Fermeture du flux
+            fluxEnregistrement.Close();
         }
 
         /// <summary>
