@@ -92,8 +92,8 @@ namespace TP_1_420_216_FX
 
             var positionFormat = Position.ToString();
 
-            string joueur = String.Format("{0,-18} {1,-15} ({2,-4}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
-                Nom, Utilitaire.FormaterChainePascalOuMixte(positionFormat), CodeEquipe, Stats.NbButs, Stats.NbAides, 
+            string joueur = String.Format("{0,-18} {1,-15} ({2,-3}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
+                Nom, Utilitaire.FormaterChainePascalOuMixte(positionFormat), CodeEquipe.Trim(), Stats.NbButs, Stats.NbAides, 
                 Stats.PlusOuMoins, Stats.NbPointsPool());
 
             return joueur;
