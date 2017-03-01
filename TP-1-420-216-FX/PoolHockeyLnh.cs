@@ -70,17 +70,17 @@ namespace TP_1_420_216_FX
 
         #region METHODES
         /// <summary>
-        /// Recherche l'equipe du joueur
+        /// Recherche l'équipe du joueur
         /// </summary>
         /// <param name="codeEquipe"></param>
         public Equipe RechercherEquipe(String codeEquipe)
         {
-            //variable local epour compter le nombre d'equipes
+            //variable locale pour compter le nombre d'équipes
             int nbrEquipes = _lesEquipes.Count();
             
-            //pour chaque equipe, on valide que le code soit 
+            //pour chaque équipe, on valide que le code soit 
             //équivalent a celle entré 'codeEquipe'
-            //retourne null si l'equipe n'est ps dans la liste
+            //retourne null si l'équipe n'est ps dans la liste
             for (int i=0; i<nbrEquipes; i++)
             {
                 if(codeEquipe.Equals(_lesEquipes[i].Code))
