@@ -83,7 +83,7 @@ namespace TP_1_420_216_FX
             //retourne null si l'équipe n'est ps dans la liste
             for (int i=0; i<nbrEquipes; i++)
             {
-                if(codeEquipe.Equals(_lesEquipes[i].Code))
+                if(codeEquipe.Equals(_lesEquipes[i].Code.Trim()))
                 {
                     return _lesEquipes[i];
                     
