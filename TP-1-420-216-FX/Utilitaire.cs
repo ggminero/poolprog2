@@ -172,7 +172,7 @@ namespace TP_1_420_216_FX
 
         /// <summary>
         /// Méthode permettant d'enregistrer les participants si il y a eu
-        /// lieu des changement a leur joueurs sur la forme
+        /// lieu des changement à leur joueurs sur la forme
         /// </summary>
         /// <param name="cheminFichier"></param>
         /// <param name="lesParticipants"></param>
