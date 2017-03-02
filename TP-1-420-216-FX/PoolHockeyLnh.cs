@@ -106,7 +106,7 @@ namespace TP_1_420_216_FX
 
                 if (codeEquipe.Equals(this.LesEquipes[i].Code))
                 {
-                    return _lesEquipes[i];
+                    return this.LesEquipes[i];
                 }
             }
 
