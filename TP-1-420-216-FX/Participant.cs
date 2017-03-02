@@ -73,8 +73,8 @@ namespace TP_1_420_216_FX
         /// <param name="nom">Nom du Joueur.</param>
         public Participant(String nom, byte[] vectNoJoueurPool)
         {
-            _vectNoJoueurPool = vectNoJoueurPool;
-            _nom = nom;
+            this.VectNoJoueurPool = vectNoJoueurPool;
+            this.Nom = nom;
         }
 
         #endregion

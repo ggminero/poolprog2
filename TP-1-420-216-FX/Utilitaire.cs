@@ -206,11 +206,8 @@ namespace TP_1_420_216_FX
             //finallement, on enlève les espaces aux extremités et converti a Lower
             string chainePascale = String.Empty;
             
-            foreach(Char charactere in chaineNonPascale)
-            int compteur = 0;
-
-            //itération sur la chaîne de caractère
-            for(int i=0; i< chaineNonPascale.Length;i++)
+            foreach(Char charactere in chaineNonPascale)          
+            //itération sur la chaîne de caractère          
             {
                 if(Char.IsUpper(charactere))
                 {
