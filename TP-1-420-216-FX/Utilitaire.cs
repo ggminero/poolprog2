@@ -207,11 +207,11 @@ namespace TP_1_420_216_FX
             string chainePascale = String.Empty;
             
             foreach(Char charactere in chaineNonPascale)
-            {
-                int compteur = 0;
+            int compteur = 0;
 
-                //itération sur la chaîne de caractère
-            
+            //itération sur la chaîne de caractère
+            for(int i=0; i< chaineNonPascale.Length;i++)
+            {
                 if(Char.IsUpper(charactere))
                 {
                     chainePascale += " ";
@@ -222,7 +222,6 @@ namespace TP_1_420_216_FX
                     chainePascale += charactere.ToString();
                 }
             }
-            
             return chainePascale.ToLower().Trim();
         }
 
