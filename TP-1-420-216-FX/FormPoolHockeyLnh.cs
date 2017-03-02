@@ -31,7 +31,7 @@ namespace TP_1_420_216_FX
             listBoxParticipants.ClearSelected();
             listBoxJoueurs.ClearSelected();
             comboBoxEchange.Visible = false;
-
+            
         }
 
         /// <summary>
