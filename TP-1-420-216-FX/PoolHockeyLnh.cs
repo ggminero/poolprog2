@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TP_1_420_216_FX
 {
+    /// <summary>
+    /// Les fichiers texte.
+    /// </summary>
     static class Constants
     {
         public const string FichierParticipants = "participants.txt";
@@ -14,24 +17,26 @@ namespace TP_1_420_216_FX
         public const string FichierEquipes   = "equipes.txt";
 
     }
-
+    /// <summary>
+    /// Classe représentant le pool de hockey de la LNH.
+    /// </summary>
     public class PoolHockeyLnh
     {
 
         #region ATTRIBUTS
 
         /// <summary>
-        /// Les Joueurs chargés du fichier txt
+        /// Les Joueurs chargés du fichier texte
         /// </summary>
         private Joueur[] _lesJoueurs;
 
         /// <summary>
-        /// Les Participants chargés du fichier txt
+        /// Les Participants chargés du fichier texte
         /// </summary>
         private Participant[] _lesParticipants;
 
         /// <summary>
-        /// Les Équipes chargés du fichier txt
+        /// Les Équipes chargés du fichier texte
         /// </summary>
         private Equipe[] _lesEquipes;
 
@@ -49,7 +54,7 @@ namespace TP_1_420_216_FX
         }
 
         /// <summary>
-        /// Les Equipes
+        /// Les équipes
         /// </summary>
         public Equipe[] LesEquipes
         {
@@ -68,6 +73,20 @@ namespace TP_1_420_216_FX
 
         #endregion
 
+        #region CONSTRUCTEURS
+
+        /// <summary>
+        /// Constructeur sans paramètre qui charge les données nécessaires pour le pool de hockey de la LNH.
+        /// </summary>
+        public PoolHockeyLnh()
+        {
+            this.LesEquipes = Utilitaire.ChargerEquipes(Constants.FichierEquipes);
+            this.LesParticipants = Utilitaire.ChargerParticipants(Constants.FichierParticipants); ;
+            this.LesJoueurs = Utilitaire.ChargerJoueurs(Constants.FichierJoueursStats);
+        }
+
+        #endregion
+           
         #region METHODES
         /// <summary>
         /// Recherche l'équipe du joueur
@@ -75,22 +94,27 @@ namespace TP_1_420_216_FX
         /// <param name="codeEquipe"></param>
         public Equipe RechercherEquipe(String codeEquipe)
         {
-            
+            Equipe equipe = ;
             //variable locale pour compter le nombre d'équipes
-            int nbrEquipes = _lesEquipes.Count();
-
+            int nbrEquipes = this.LesEquipes.Count();
+          
             //pour chaque équipe, on valide que le code soit 
             //équivalent a celle entré 'codeEquipe'
-            //retourne null si l'équipe n'est ps dans la liste
+            //retourne null si l'équipe n'est pas dans la liste
             for (int i=0; i<nbrEquipes; i++)
             {
-                
-                if(codeEquipe.Equals(_lesEquipes[i].Code.Trim()))
+                Equipe uneEquipe = new Equipe(_lesEquipes[i].Nom, _lesEquipes[i].Code, _lesEquipes[i].Ville);
+                if (codeEquipe.Equals(this.LesEquipes[i].Code.Trim()))
                 {
-                    return _lesEquipes[i];
+                    codeEquipe = this.LesEquipes[i].Code;
                 }
+                else
+                {
+                    codeEquipe = null;                  
+                }
+                equipe = uneEquipe;
             }
-            return null;
+            return equipe;
         }
         /// <summary>
         /// Recherche l'indice du joueur
@@ -102,7 +126,7 @@ namespace TP_1_420_216_FX
             //Console.WriteLine(Array.IndexOf(_lesJoueurs, JoueurRech));
             if(_lesJoueurs.Contains(JoueurRech))
             {
-                return Array.IndexOf(_lesJoueurs, JoueurRech);
+                return Array.IndexOf(this.LesJoueurs, JoueurRech);
             }
             return -1;
 
@@ -113,20 +137,20 @@ namespace TP_1_420_216_FX
         /// <param name="participant"></param>
         public short PointsAuPool(Participant participant)
         {
-            //varialbes pour additioner les points au pool des joueurs du participant
+            //variables pour additionner les points au pool des joueurs du participant
             short pointsAuPoolDesJoueurs = 0;
 
-            //Vecteur des joueurs du participant selectionnée
+            //Vecteur des joueurs du participant sélectionnée
             var joueursSelect = Encoding.UTF8.GetString(participant.VectNoJoueurPool).Split(',');
             Console.WriteLine(joueursSelect.Length);
 
-            //pour chaque joueur du participant on additionne les points au pool des stats a la variable 
+            //pour chaque joueur du participant, on additionne les points au pool des statistiques à la variable 
             //pointsAuPoolDesJoueurs (avec validation de la longueur de la liste et un élément vide)
             if(joueursSelect.Length != 0 && joueursSelect[0] != "")
             { 
                 foreach (var joueur in joueursSelect)
                 {
-                    pointsAuPoolDesJoueurs += _lesJoueurs[Int32.Parse(joueur) - 1].Stats.NbPointsPool();
+                    pointsAuPoolDesJoueurs += this.LesJoueurs[Int32.Parse(joueur) - 1].Stats.NbPointsPool();
                 }
                 return pointsAuPoolDesJoueurs;
             }
@@ -139,19 +163,6 @@ namespace TP_1_420_216_FX
 
         #endregion
 
-        #region CONSTRUCTEURS
-
-        /// <summary>
-        /// Constructeur sans paramètre qui charge les données nécessaires pour le pool de hockey de la LNH.
-        /// </summary>
-        /// </summary>
-        public PoolHockeyLnh()
-        {
-            _lesEquipes = Utilitaire.ChargerEquipes(Constants.FichierEquipes);
-            _lesParticipants = Utilitaire.ChargerParticipants(Constants.FichierParticipants); ;
-            _lesJoueurs = Utilitaire.ChargerJoueurs(Constants.FichierJoueursStats);
-        }
-
-        #endregion
+  
     }
 }

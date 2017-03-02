@@ -8,11 +8,14 @@ using System.Text.RegularExpressions;
 
 namespace TP_1_420_216_FX
 {
+    /// <summary>
+    /// Classe statique contenant des méthodes utilitaires.
+    /// </summary>
     public class Utilitaire
     {
 
         /// <summary>
-        /// Méthode permetant de charger les participats a partir d'un fichier texte
+        /// Méthode permettant de charger les participants à partir d'un fichier texte
         /// </summary>
         /// <param name="cheminFichier"></param>
         public static Participant[] ChargerParticipants(string cheminFichier)
@@ -24,29 +27,29 @@ namespace TP_1_420_216_FX
             var nbrLignes = File.ReadLines(cheminFichier).Count();
             Participant[] listeParticipants = new Participant[nbrLignes];
             Console.WriteLine(nbrLignes);
-            //lecture du fichier text
+            //lecture du fichier texte
             using (StreamReader lecture = new StreamReader(cheminFichier))
             {
                 string ligne;
                 
-                // Lecture des lignes du fichier jusqu'a la fin du fichier
+                // Lecture des lignes du fichier jusqu'à la fin du fichier
                 while ((ligne = lecture.ReadLine()) != null)
                 {
 
-                    //split la ligne a un vecteur
+                    //Split la ligne a un vecteur
                     List<String> vecteurLigne = new List<String>(ligne.Split(','));
 
                     string nom = vecteurLigne[0].Trim();
 
-                    //Enleve le nom du vecteur pour avoir que des numéros de joueurs choisis 
+                    //Enlève le nom du vecteur pour avoir que des numéros de joueurs choisis 
                     vecteurLigne.RemoveAt(0);
                     //Crée un nouveau vecteur avec les numéros de joueurs choisis 
                     string newByteString = String.Join(",", vecteurLigne);
 
-                    //nous convertissions la chaine de characteres a un byte array
+                    //nous convertissions la chaîne de caractères a un byte Array
                     byte[] bytes = Encoding.UTF8.GetBytes(newByteString);
                     
-                    //init un objet Participant avec les attributs de la classe
+                    //Initialise un objet Participant avec les attributs de la classe
                     Participant unParticipant = new Participant(nom, bytes);
 
                     //ajout de l'objet participant au vecteur listeParticipants
@@ -58,7 +61,7 @@ namespace TP_1_420_216_FX
         }
 
         /// <summary>
-        /// Méthode permetant de charger les équipes a partir d'un fichier texte
+        /// Méthode permettant de charger les équipes a partir d'un fichier texte
         /// </summary>
         /// <param name="cheminFichier"></param>
         public static Equipe[] ChargerEquipes(string cheminFichier)
@@ -72,7 +75,7 @@ namespace TP_1_420_216_FX
             {
                 string ligne;
 
-                // Lecture des lignes du fichier jusqu'a la fin du fichier
+                // Lecture des lignes du fichier jusqu'à la fin du fichier
                 while ((ligne = lecture.ReadLine()) != null)
                 {
                     List<String> vecteurLigne = new List<String>(ligne.Split(','));
@@ -89,7 +92,7 @@ namespace TP_1_420_216_FX
         }
 
         /// <summary>
-        /// Méthode permetant de charger les joueurs a partir d'un fichier texte
+        /// Méthode permettant de charger les joueurs a partir d'un fichier texte
         /// </summary>
         /// <param name="cheminFichier"></param>
         public static Joueur[] ChargerJoueurs(string cheminFichier)
@@ -101,17 +104,17 @@ namespace TP_1_420_216_FX
             var nbrLignes = File.ReadLines(cheminFichier).Count();
             Joueur[] listeJoueur = new Joueur[nbrLignes];
 
-            //lecture du fichier text
+            //lecture du fichier texte
             using (StreamReader lecture = new StreamReader(cheminFichier))
             {
 
                 string ligne;
 
-                // Lecture des lignes du fichier jusqu'a la fin du fichier
+                // Lecture des lignes du fichier jusqu'à la fin du fichier
                 while ((ligne = lecture.ReadLine()) != null)
                 {
                     
-                    //split la ligne pour ajouter chaque element de la ligne a un vecteur
+                    //Split la ligne pour ajouter chaque élément de la ligne a un vecteur
                     //joueurs avant d'initialiser un objet Joueur 
                     var joueurs = ligne.Split(',');
 
@@ -125,7 +128,7 @@ namespace TP_1_420_216_FX
                     byte nbAides = Convert.ToByte(joueurs[5]);
                     short plusOuMoins = Convert.ToInt16(joueurs[6]);
 
-                    //Enleve l'espace de l'element du vecteur
+                    //Enlève l'espace de l'élément du vecteur
                     string positionJoueur = joueurs[2].Trim();
                     
                     //Switch pour déterminer la position du joueur 
@@ -152,14 +155,14 @@ namespace TP_1_420_216_FX
                             break;
                     }
                     
-                    //init des objets StatsJoueurs, Joueur  avant d'ajouter au vecteur d'objet joueur
+                    //Initialisation des objets StatsJoueurs, Joueur  avant d'ajouter au vecteur d'objet joueur
                     StatsJoueur statusUn = new StatsJoueur(nbButs, nbAides, plusOuMoins);
                     Joueur unJoueur = new Joueur(joueurs[0], joueurs[1], (PositionHockey)indexPostition, Convert.ToUInt32(joueurs[3]), statusUn);
 
                     //Console.WriteLine(unJoueur);
                     listeJoueur[nbrJoueurs] = unJoueur;
 
-                    //compteur pour itérer les lignes du fichier text, +1 a chaque itération
+                    //compteur pour itérer les lignes du fichier texte, +1 à chaque itération
                     nbrJoueurs += 1;
                 }
             }
@@ -204,13 +207,13 @@ namespace TP_1_420_216_FX
         /// <param name="chaineNonPascale"></param>
         public static string FormaterChainePascalOuMixte(string chaineNonPascale)
         {
-            //déclaration de variables pour créer une chaîne en format pascale
-            // et on itere la chaine pour concatener des espaces avant une majuscule
-            //finallement, on enlève les espaces aux extremités et converti a Lower
+            //Déclaration de variables pour créer une chaîne en format pascale
+            //et on itère la chaîne pour concaténer des espaces avant une majuscule
+            //finalement, on enlève les espaces aux extrémités et converti à Lower
             string chainePascale = String.Empty;
             
             foreach(Char charactere in chaineNonPascale)          
-            //itération sur la chaîne de caractère          
+            //Itération sur la chaîne de caractère          
             {
                 if(Char.IsUpper(charactere))
                 {
