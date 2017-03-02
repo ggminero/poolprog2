@@ -204,9 +204,9 @@ namespace TP_1_420_216_FX
         /// <param name="chaineNonPascale"></param>
         public static string FormaterChainePascalOuMixte(string chaineNonPascale)
         {
-            //déclaration de variables pour créer une chaîne en format pascale
-            // et on itère la chaîne pour concaténer des espaces avant une majuscule
-            //finalement, on enlève les espaces aux extrémités et converti a Lower
+            //Déclaration de variables pour créer une chaîne en format pascale
+            //et on itère la chaîne pour concaténer des espaces avant une majuscule
+            //finalement, on enlève les espaces aux extrémités et converti à Lower
             string chainePascale = String.Empty;
             
             foreach(Char charactere in chaineNonPascale)          
