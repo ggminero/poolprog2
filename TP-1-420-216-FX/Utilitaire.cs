@@ -11,7 +11,7 @@ namespace TP_1_420_216_FX
     /// <summary>
     /// Classe statique contenant des méthodes utilitaires.
     /// </summary>
-    public class Utilitaire
+    public static class Utilitaire
     {
 
         /// <summary>

@@ -92,7 +92,7 @@ namespace TP_1_420_216_FX
                     //Itération sur la liste des équipes
                     foreach (Equipe equipe in lesEquipes)
                     {
-                        //Si le code d'équipe est au code dequipe du joueurs on init la fiche du joueur
+                        //Si le code d'équipe est au code de l'équipe du joueurs on initialise la fiche du joueur
                         if (equipe.Code.Trim().Contains(joueur.CodeEquipe.Trim()))
                         {
                             FormFicheJoueur formJoueur = new FormFicheJoueur(equipe, joueur);
@@ -105,15 +105,15 @@ namespace TP_1_420_216_FX
 
         /// <summary>
         /// active les boutons pour voir la fiche des joueurs et
-        /// echanger joueur quands l'index de la listbox des joueurs 
+        /// échanger joueur quand l'index de la ListBox des joueurs 
         /// est non null
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void listBoxJoueurs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //si un joueur de la liste est selectionné
-            //on active les btns, sinon ils restent inactifs.
+            //si un joueur de la liste est sélectionné
+            //on active les buttons, sinon ils restent inactifs.
             if (listBoxJoueurs.SelectedIndex != -1)
             {
                 btnVoirFiche.Enabled = true;
@@ -131,40 +131,40 @@ namespace TP_1_420_216_FX
         }
 
         /// <summary>
-        /// active la groupbox avec le nom du participant selectionné
-        /// et les points au pool quands l'index de la listbox des participants 
+        /// active la GroupBox avec le nom du participant sélectionné
+        /// et les points au pool quand l'index de la ListBox des participants 
         /// est non null
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void listBoxParticipants_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //reset de la comboBox d'echange de joueur lorsque on 
-            //selectionne un autre participant
+            //reset du comboBox d'échange de joueur lorsqu'on 
+            //sélectionne un autre participant
             comboBoxEchange.Visible = false;
             comboBoxEchange.Enabled = false;
             //variable pour le calcul de points des participants dans la pool
             int pointsPool = 0;
 
-            //si un participant est selectionné on affiche la groupBox avec les  stats
-            //duparticipant, sinon, elle reste caché
+            //si un participant est sélectionné on affiche la groupBox avec les statistiques
+            //du participant, sinon, elle reste caché
             if (listBoxParticipants.SelectedIndex != -1)
             {
                 groupBoxParticipant.Enabled = true;
                 groupBoxParticipant.Visible = true;
 
-                // Retourne le participant selectionné de la ListBox.
+                // Retourne le participant sélectionné de la ListBox.
                 string partSelect = listBoxParticipants.SelectedItem.ToString();
 
-                // Retourne l'index du participant selectionné de la ListBox.
+                // Retourne l'index du participant sélectionné de la ListBox.
                 int partIndex = listBoxParticipants.FindString(partSelect);
 
-                // set la listBox de joueurs a null pour pouvoir rafréshire les elements
+                // set la listBox de joueurs a null pour pouvoir rafraichir les éléments
                 listBoxJoueurs.DataSource = null;
 
                 Joueur[] lesJoueurs = lePool.LesJoueurs;
 
-                //iteration sur la liste de participants
+                //Itération sur la liste de participants
                 foreach (Participant part in lePool.LesParticipants)
                 {
 
@@ -175,10 +175,10 @@ namespace TP_1_420_216_FX
                     if (part.Nom.Equals(partSelect))
                     {
                        
-                        //on clear la listbox de joueurs
+                        //on clear la ListBox de joueurs
                         listBoxJoueurs.Items.Clear();
-                        //iteration sur la liste de joueurs selectionné
-                        //du byte array et on ajoute a la listBox de joueurs
+                        //Itération sur la liste de joueurs sélectionné
+                        //du byte Array et on ajoute a la listBox de joueurs
                         //validation pour participant sans joueurs
                         if (!joueursSelect[0].Equals(""))
                         {
@@ -199,13 +199,13 @@ namespace TP_1_420_216_FX
                 //change le nombre de points du participant a afficher dans la groupBox
                 foreach (var joueur in lePool.LesJoueurs)
                 {
-                    //si le joueur est déja dans la liste, on calcul les points
+                    //si le joueur est déjà dans la liste, on calcul les points
                     if (listBoxJoueurs.Items.Contains(joueur))
                     {
                         pointsPool += joueur.Stats.NbAides + joueur.Stats.NbButs + joueur.Stats.PlusOuMoins / 2;
                     }
                 }
-                //assigne la variable et converti a chaine de charactere
+                //assigne la variable et converti a chaîne de caractère
                 labelNbrPoints.Text = pointsPool.ToString();
             }
             else
@@ -226,12 +226,12 @@ namespace TP_1_420_216_FX
             comboBoxEchange.Visible = true;
             comboBoxEchange.Enabled = true;
 
-            //Remplissage de ComboBox Echanger avec les valeurs de la méthode retourné de
-            //de chargerjoueur de la classe utilitaire. On exclue les joueurs déja choisi
-            //iteration sur la liste de joueurs
+            //Remplissage de ComboBox Échanger avec les valeurs de la méthode retourné de
+            //ChargerJoueur de la classe utilitaire. On exclue les joueurs déjà choisi
+            //itération sur la liste de joueurs
             foreach (var joueur in lePool.LesJoueurs)
             {
-                //si le joueur est déja dasn la liste, on n'ajoute pas a la comboBox
+                //si le joueur est déjà dans la liste, on n'ajoute pas a la comboBox
                 if (!listBoxJoueurs.Items.Contains(joueur))
                 {
                     comboBoxEchange.Items.Add(joueur);
@@ -240,14 +240,14 @@ namespace TP_1_420_216_FX
         }
 
         /// <summary>
-        /// re-init le formulaire avec les valeurs par défault
+        /// réinitialise le formulaire avec les valeurs par défaut
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnToutLesJoueurs_Click(object sender, EventArgs e)
         {
             listBoxJoueurs.DataSource = null;
-            //on clear la listbox de joueurs
+            //on clear la ListBox de joueurs
             listBoxJoueurs.Items.Clear();
             comboBoxEchange.Visible = false;
             groupBoxParticipant.Visible = false;
