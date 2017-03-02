@@ -136,6 +136,10 @@ namespace TP_1_420_216_FX
         /// <param name="e"></param>
         private void listBoxParticipants_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //reset de la comboBox d'echange de joueur lorsque on 
+            //selectionne un autre participant
+            comboBoxEchange.Visible = false;
+            comboBoxEchange.Enabled = false;
             //variable pour le calcul de points des participants dans la pool
             int pointsPool = 0;
 
