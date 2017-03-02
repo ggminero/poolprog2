@@ -184,9 +184,9 @@ namespace TP_1_420_216_FX
             // Création du flux d'enregistrement du fichier participants
             StreamWriter fluxEnregistrement = new StreamWriter(cheminFichier);
 
-            
+
             //String participantTexte;
-            
+
             // Traitement de chaque objet Participant du vecteur
             for (int i = 0; i < lesParticipants.Length; i++)
             {
@@ -194,7 +194,7 @@ namespace TP_1_420_216_FX
                 participantTexte = lesParticipants[i].Nom + ", " + lesParticipants[i].VectNoJoueurPool;
 
                 // Écriture de la version sérialisée d'un objet Participant
-                fluxEnregistrement.WriteLine(participantTexte);                                              
+                fluxEnregistrement.WriteLine(participantTexte);
             }
             Console.WriteLine(participantTexte);
             // Fermeture du flux

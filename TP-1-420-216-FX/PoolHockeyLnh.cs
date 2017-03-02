@@ -93,7 +93,7 @@ namespace TP_1_420_216_FX
         /// </summary>
         /// <param name="codeEquipe"></param>
         public Equipe RechercherEquipe(String codeEquipe)
-        {   
+        {
             //variable locale pour compter le nombre d'équipes
             int nbrEquipes = this.LesEquipes.Count();
             Equipe equipe;
@@ -103,17 +103,13 @@ namespace TP_1_420_216_FX
             for (int i=0; i<nbrEquipes; i++)
             {
                 Equipe uneEquipe = new Equipe(this.LesEquipes[i].Nom, this.LesEquipes[i].Code, this.LesEquipes[i].Ville);
-                if (codeEquipe.Equals(this.LesEquipes[i].Code.Trim()))
+
+                if (codeEquipe.Equals(this.LesEquipes[i].Code))
                 {
-                    equipe = uneEquipe;
-                    return equipe;
-                                                         
-                }  
-                else
-                {
-                   return null;
-                }                          
+                    return _lesEquipes[i];
+                }
             }
+
             return null;
         }
         /// <summary>
@@ -160,6 +156,7 @@ namespace TP_1_420_216_FX
             }
             
         }
+
 
         #endregion
 
