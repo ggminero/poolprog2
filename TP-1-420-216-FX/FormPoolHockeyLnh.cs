@@ -11,20 +11,23 @@ using System.Windows.Forms;
 
 namespace TP_1_420_216_FX
 {
+    /// <summary>
+    /// Classe du formulaire du pool de hockey.
+    /// </summary>
     public partial class FormPoolHockey : Form
     {
-        //init du pool de hockey dans la forme
+        //Initialisation du pool de hockey dans la forme
         PoolHockeyLnh lePool = new PoolHockeyLnh();
         
         public FormPoolHockey()
         {
             InitializeComponent();
 
-            //Initialize les listBox avec les données chargées a partire de la classe Utilitaire
+            //Initialise les listBox avec les données chargées à partir de la classe Utilitaire
             listBoxParticipants.DataSource = lePool.LesParticipants;    
             listBoxJoueurs.DataSource = lePool.LesJoueurs;        
 
-            //enleve la selection par défault des elements de type listbox
+            //Enlève la sélection par défaut des éléments de type ListBox
             listBoxParticipants.ClearSelected();
             listBoxJoueurs.ClearSelected();
             comboBoxEchange.Visible = false;
@@ -66,27 +69,27 @@ namespace TP_1_420_216_FX
         /// <param name="e"></param>
         private void btnVoirFiche_Click(object sender, EventArgs e)
         {
-            // variables locals pour avoir les joueurs et équipes
+            // variables locales pour avoir les joueurs et équipes
             Joueur[] lesJoueurs = lePool.LesJoueurs;
             Equipe[] lesEquipes = lePool.LesEquipes;
 
-            // Retourne le participant selectionné de la ListBox avec stats en vecteur
+            // Retourne le participant sélectionné de la ListBox avec les statistiques en vecteur
             var nomJoueurSelect = listBoxJoueurs.SelectedItem.ToString().Split(' ');
             
-            //On additione les 2 premiers éléments du vecteur pour avoir le nom
+            //On additionne les 2 premiers éléments du vecteur pour avoir le nom
             string joueurSelect = nomJoueurSelect[0] +" "+ nomJoueurSelect[1]; //listBoxJoueurs.SelectedItem.ToString();
 
-            // Retourne l'index du participant selectionné de la ListBox.
+            // Retourne l'index du participant sélectionné de la ListBox.
             int partIndex = listBoxJoueurs.FindString(joueurSelect);
             
-            //iteration sur la liste des joueurs
+            //Itération sur la liste des joueurs
             foreach (Joueur joueur in lesJoueurs)
             {
-                // si le nom dans la chaine de characteres
+                // si le nom dans la chaîne de caractères
                 if (joueurSelect.Contains(joueur.Nom))
                 {
                     lePool.RechercherIndiceJoueur(joueur);
-                    //iteration sur la liste des equipes
+                    //Itération sur la liste des équipes
                     foreach (Equipe equipe in lesEquipes)
                     {
                         //Si le code d'équipe est au code dequipe du joueurs on init la fiche du joueur
@@ -247,7 +250,7 @@ namespace TP_1_420_216_FX
             btnEchangerJoueur.Enabled = false;
             btnVoirFiche.Enabled = false;
             listBoxJoueurs.DataSource = lePool.LesJoueurs;
-            //enleve la selection par défault des elements de type listbox
+            //enlève la sélection par défaut des éléments de type ListBox
             listBoxParticipants.ClearSelected();
             listBoxJoueurs.ClearSelected();
 
