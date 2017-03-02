@@ -91,9 +91,9 @@ namespace TP_1_420_216_FX
         {
 
             var positionFormat = Position.ToString();
-
-            string joueur = String.Format("{0,-18} {1,-15} ({2,-3}) b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
-                Nom, Utilitaire.FormaterChainePascalOuMixte(positionFormat), CodeEquipe.Trim(), Stats.NbButs, Stats.NbAides, 
+            var codeAvecParent = "(" + CodeEquipe + ")";
+            string joueur = String.Format("{0,-18} {1,-15} {2, -5} b ={3,3}, a ={4,3}, (+/-) ={5,3} Points = {6,3} ",
+                Nom, Utilitaire.FormaterChainePascalOuMixte(positionFormat), codeAvecParent, Stats.NbButs, Stats.NbAides, 
                 Stats.PlusOuMoins, Stats.NbPointsPool());
 
             return joueur;
@@ -113,7 +113,7 @@ namespace TP_1_420_216_FX
         /// </summary>
         public Joueur(String nom, String code, PositionHockey position, uint noPhoto, StatsJoueur stats)
         {
-            _codeEquipe  = code;
+            _codeEquipe  = code.Trim();
             _nom = nom;
             _position = position;
             _noPhoto = noPhoto;
