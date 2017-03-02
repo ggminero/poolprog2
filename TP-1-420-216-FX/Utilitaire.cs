@@ -175,12 +175,15 @@ namespace TP_1_420_216_FX
         /// <param name="lesParticipants"></param>
         public static void EnregistrerParticipants(String cheminFichier, Participant[] lesParticipants)
         {
+            // Chaîne de caractères pour la version sérialisée d'un objet Participant
+            string participantTexte = String.Empty;
+
             // Création du flux d'enregistrement du fichier participants
             StreamWriter fluxEnregistrement = new StreamWriter(cheminFichier);
 
-            // Chaîne de caractères pour la version sérialisée d'un objet Participant
-            String participantTexte;
-
+            
+            //String participantTexte;
+            
             // Traitement de chaque objet Participant du vecteur
             for (int i = 0; i < lesParticipants.Length; i++)
             {
@@ -190,7 +193,7 @@ namespace TP_1_420_216_FX
                 // Écriture de la version sérialisée d'un objet Participant
                 fluxEnregistrement.WriteLine(participantTexte);                                              
             }
-
+            Console.WriteLine(participantTexte);
             // Fermeture du flux
             fluxEnregistrement.Close();
         }

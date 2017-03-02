@@ -75,22 +75,19 @@ namespace TP_1_420_216_FX
         /// <param name="codeEquipe"></param>
         public Equipe RechercherEquipe(String codeEquipe)
         {
+            
             //variable locale pour compter le nombre d'équipes
             int nbrEquipes = _lesEquipes.Count();
-            
+
             //pour chaque équipe, on valide que le code soit 
             //équivalent a celle entré 'codeEquipe'
             //retourne null si l'équipe n'est ps dans la liste
             for (int i=0; i<nbrEquipes; i++)
             {
+                
                 if(codeEquipe.Equals(_lesEquipes[i].Code.Trim()))
                 {
                     return _lesEquipes[i];
-                    
-                }
-                else
-                {
-                    return null;
                 }
             }
             return null;
